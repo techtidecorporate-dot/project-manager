@@ -1,0 +1,10 @@
+/* V4 Theme Base Styles */
+#root {
+  min-height: 100vh;
+  width: 100%;
+}
+
+.selection\:bg-brand-accent ::selection {
+  background-color: #FF6B01;
+  color: #FFFFFF;
+}

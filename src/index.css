@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    --brand-accent: #fa2742;
+    --bg-main: #e8eae3;
+    --text-main: #373833;
+    --text-secondary: #000000;
+    --text-light: #FFFFFF;
+}
+
+body {
+    @apply bg-[#e8eae3] text-[#373833] antialiased;
+    font-family: 'Space Grotesk', system-ui, sans-serif;
+}
+
+.glass-panel {
+    @apply bg-white/50 backdrop-blur-md border border-[#FF6B01]/20 shadow-xl rounded-xl;
+}
+
+.btn-primary {
+    @apply px-6 py-2.5 bg-[#fa2742] hover:bg-opacity-90 text-white rounded-xl transition-all duration-300 shadow-lg active:scale-95 font-semibold;
+}
+
+.card {
+    @apply bg-white rounded-xl shadow-lg border border-[#373833]/10 p-6 text-[#373833];
+}
+
+.footer {
+    @apply bg-[#373833] text-[#e8eae3] py-8 px-6 border-t border-[#fa2742]/20;
+}
+
+.input-field {
+    @apply w-full px-4 py-3 bg-[#e8eae3] border border-[#373833]/30 rounded-xl focus:ring-2 focus:ring-[#fa2742] focus:border-[#fa2742] outline-none transition-all duration-200 text-[#373833] font-medium placeholder:text-[#373833]/70;
+}
+
+/* Custom transitions */
+.page-transition-enter {
+    opacity: 0;
+    transform: translateY(10px);
+}
+
+.page-transition-enter-active {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 300ms, transform 300ms;
+}
+
+/* Hide scrollbar while keeping scroll functionality */
+.scrollbar-hide {
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;
+    /* Chrome, Safari and Opera */
+}
+
+/* Custom Scrollbar */
+.custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    background: rgba(55, 56, 51, 0.2);
+    border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: rgba(55, 56, 51, 0.4);
+}
