@@ -11,10 +11,10 @@ const ProtectedRoute = ({ children, allowedRoles, requiredRole }) => {
 
     if (loading) {
         return (
-            <div className="flex items-center justify-center min-h-screen bg-[#e8eae3]">
+            <div className="flex items-center justify-center min-h-screen bg-[--background]">
                 <div className="relative w-24 h-24">
-                    <div className="absolute top-0 left-0 w-full h-full border-2 border-[#fa2742]/20 rounded-[32px]"></div>
-                    <div className="absolute top-0 left-0 w-full h-full border-4 border-[#fa2742] rounded-[32px] border-t-transparent animate-spin"></div>
+                    <div className="absolute top-0 left-0 w-full h-full border-2 border-[#453abc]/20 rounded-[32px]"></div>
+                    <div className="absolute top-0 left-0 w-full h-full border-4 border-[#60c3e3] rounded-[32px] border-t-transparent animate-spin"></div>
                 </div>
             </div>
         );

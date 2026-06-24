@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+﻿import React, { useState, useEffect } from 'react';
 import {
     Calendar,
     Download,
@@ -216,24 +216,24 @@ const AdminAttendance = () => {
     );
 
     return (
-        <div className="space-y-8 pb-10 selection:bg-[#fa2742]/10 selection:text-[#fa2742]">
+        <div className="space-y-8 pb-10 selection:bg-[#453abc]/10 selection:text-[#453abc]">
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
                 <div>
-                    <h2 className="text-4xl font-black text-[#373833] tracking-tight">Personnel Attendance</h2>
-                    <p className="text-[#373833]/60 font-bold text-sm italic uppercase tracking-widest">Time Tracking & Performance Metrics</p>
+                    <h2 className="text-4xl font-black text-[#191a23] tracking-tight">Personnel Attendance</h2>
+                    <p className="text-[#191a23]/60 font-bold text-sm italic uppercase tracking-widest">Time Tracking & Performance Metrics</p>
                 </div>
 
                 <div className="flex items-center gap-4">
                     <button
                         onClick={() => setIsSettingsOpen(!isSettingsOpen)}
-                        className="px-6 py-3 bg-[#e8eae3] text-[#373833] rounded-xl font-black uppercase tracking-widest text-[10px] shadow-sm hover:bg-[#373833] hover:text-white transition-all flex items-center gap-2"
+                        className="px-6 py-3 bg-[#ffffff] text-[#191a23] rounded-xl font-black uppercase tracking-widest text-[10px] shadow-sm hover:bg-gradient-to-br from-[#453abc] to-[#60c3e3]  hover:text-white transition-all flex items-center gap-2"
                     >
                         <Settings size={16} />
                         <span>Config Matrix</span>
                     </button>
                     <button
                         onClick={downloadCSV}
-                        className="px-6 py-3 bg-[#373833] text-white rounded-xl font-black uppercase tracking-widest text-[10px] shadow-xl hover:bg-[#fa2742] transition-all flex items-center gap-2"
+                        className="px-6 py-3 bg-gradient-to-br from-[#453abc] to-[#60c3e3]   text-white rounded-xl font-black uppercase tracking-widest text-[10px] shadow-xl hover:bg-[#453abc] transition-all flex items-center gap-2"
                     >
                         <FileSpreadsheet size={16} />
                         <span>Export CSV</span>
@@ -243,12 +243,12 @@ const AdminAttendance = () => {
 
             {/* Settings Expansion Panel */}
             {isSettingsOpen && (
-                <div className="bg-[#373833] rounded-[32px] p-8 shadow-2xl border border-white/5 animate-in fade-in slide-in-from-top-4 duration-500 relative overflow-hidden">
-                    <div className="absolute top-0 right-0 w-64 h-64 bg-[#fa2742] rounded-full -mr-32 -mt-32 blur-[100px] opacity-10"></div>
+                <div className="bg-gray-800 rounded-[32px] p-8 shadow-2xl border border-white/5 animate-in fade-in slide-in-from-top-4 duration-500 relative overflow-hidden">
+                    <div className="absolute top-0 right-0 w-64 h-64 bg-[#453abc] rounded-full -mr-32 -mt-32 blur-[100px] opacity-10"></div>
 
                     <div className="flex items-center gap-4 mb-8">
-                        <div className="w-12 h-12 bg-[#fa2742] rounded-2xl flex items-center justify-center">
-                            <Settings className="text-[#373833]" size={24} />
+                        <div className="w-12 h-12 bg-[#453abc] rounded-2xl flex items-center justify-center">
+                            <Settings className="text-[#191a23]" size={24} />
                         </div>
                         <div>
                             <h3 className="text-xl font-black text-white uppercase tracking-wider">Attendance Parameters</h3>
@@ -256,14 +256,14 @@ const AdminAttendance = () => {
                         </div>
                     </div>
 
-                    <form onSubmit={handleUpdateSettings} className="grid md:grid-cols-4 gap-8">
+                    <form onSubmit={handleUpdateSettings} className="grid grid-cols-1 md:grid-cols-4 gap-8">
                         <div className="space-y-2">
                             <label className="text-[10px] font-black text-white/40 uppercase tracking-widest ml-2">Clock-in Time</label>
                             <input
                                 type="time"
                                 value={settings.workingHoursStart}
                                 onChange={e => setSettings({ ...settings, workingHoursStart: e.target.value })}
-                                className="w-full bg-white/5 border border-white/10 rounded-2xl py-4 px-6 text-white font-bold outline-none focus:border-[#fa2742] transition-all"
+                                className="w-full bg-white/5 border border-white/10 rounded-2xl py-4 px-6 text-white font-bold outline-none focus:border-[#453abc] transition-all"
                             />
                         </div>
 
@@ -273,7 +273,7 @@ const AdminAttendance = () => {
                                 type="time"
                                 value={settings.workingHoursEnd}
                                 onChange={e => setSettings({ ...settings, workingHoursEnd: e.target.value })}
-                                className="w-full bg-white/5 border border-white/10 rounded-2xl py-4 px-6 text-white font-bold outline-none focus:border-[#fa2742] transition-all"
+                                className="w-full bg-white/5 border border-white/10 rounded-2xl py-4 px-6 text-white font-bold outline-none focus:border-[#453abc] transition-all"
                             />
                         </div>
 
@@ -283,12 +283,12 @@ const AdminAttendance = () => {
                                 type="date"
                                 value={settings.attendanceStartFrom}
                                 onChange={e => setSettings({ ...settings, attendanceStartFrom: e.target.value })}
-                                className="w-full bg-white/5 border border-white/10 rounded-2xl py-4 px-6 text-white font-bold outline-none focus:border-[#fa2742] transition-all"
+                                className="w-full bg-white/5 border border-white/10 rounded-2xl py-4 px-6 text-white font-bold outline-none focus:border-[#453abc] transition-all"
                             />
                         </div>
 
                         <div className="space-y-2">
-                            <label className="text-[10px] font-black text-white/40 uppercase tracking-widest ml-2">Standard Off Days</label>
+                            <label className="text-[10px] font-black text-white uppercase tracking-widest ml-2">Standard Off Days</label>
                             <div className="flex flex-wrap gap-2 pt-2">
                                 {['S', 'M', 'T', 'W', 'T', 'F', 'S'].map((day, idx) => (
                                     <button
@@ -303,7 +303,7 @@ const AdminAttendance = () => {
                                         className={clsx(
                                             "w-9 h-9 rounded-lg text-[10px] font-black transition-all border",
                                             settings.offDays.includes(idx)
-                                                ? "bg-[#fa2742] text-[#373833] border-[#fa2742]"
+                                                ? "bg-[#453abc] text-white border-[#453abc]"
                                                 : "bg-white/5 text-white/40 border-white/10 hover:border-white/20"
                                         )}
                                     >
@@ -316,7 +316,7 @@ const AdminAttendance = () => {
                         <div className="md:col-start-4 flex items-end">
                             <button
                                 type="submit"
-                                className="w-full py-4 bg-[#fa2742] text-[#373833] rounded-2xl font-black uppercase text-[10px] tracking-widest flex items-center justify-center gap-3 hover:scale-[1.02] transition-all shadow-xl shadow-[#fa2742]/10"
+                                className="w-full py-4 bg-[#453abc] text-white rounded-2xl font-black uppercase text-[10px] tracking-widest flex items-center justify-center gap-3 hover:scale-[1.02] transition-all shadow-xl shadow-[#453abc]/10"
                             >
                                 <Save size={18} />
                                 Synchronize Rules
@@ -328,12 +328,12 @@ const AdminAttendance = () => {
 
             {/* Filters Bar */}
             <div className="bg-white rounded-[32px] p-6 shadow-xl border border-gray-100 flex flex-wrap items-center gap-6">
-                <div className="flex bg-[#e8eae3] p-1.5 rounded-2xl">
+                <div className="flex bg-[#ffffff] p-1.5 rounded-2xl">
                     <button
                         onClick={() => setFilterType('month')}
                         className={clsx(
                             "px-6 py-2 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all",
-                            filterType === 'month' ? "bg-white text-[#fa2742] shadow-sm" : "text-[#373833]/40 hover:text-[#373833]"
+                            filterType === 'month' ? "bg-white text-[#453abc] shadow-sm" : "text-[#191a23]/40 hover:text-[#191a23]"
                         )}
                     >
                         Monthly
@@ -342,7 +342,7 @@ const AdminAttendance = () => {
                         onClick={() => setFilterType('custom')}
                         className={clsx(
                             "px-6 py-2 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all",
-                            filterType === 'custom' ? "bg-white text-[#fa2742] shadow-sm" : "text-[#373833]/40 hover:text-[#373833]"
+                            filterType === 'custom' ? "bg-white text-[#453abc] shadow-sm" : "text-[#191a23]/40 hover:text-[#191a23]"
                         )}
                     >
                         Custom Range
@@ -351,12 +351,12 @@ const AdminAttendance = () => {
 
                 {filterType === 'month' ? (
                     <div className="relative">
-                        <Calendar className="absolute left-4 top-1/2 -translate-y-1/2 text-[#fa2742]" size={16} />
+                        <Calendar className="absolute left-4 top-1/2 -translate-y-1/2 text-[#453abc]" size={16} />
                         <input
                             type="month"
                             value={selectedMonth}
                             onChange={(e) => setSelectedMonth(e.target.value)}
-                            className="bg-[#f0e4d4]/20 border-2 border-transparent focus:border-[#fa2742] rounded-xl py-2 pl-12 pr-4 text-[#373833] font-bold outline-none"
+                            className="bg-[#f0e4d4]/20 border-2 border-transparent focus:border-[#453abc] rounded-xl py-2 pl-12 pr-4 text-[#191a23] font-bold outline-none"
                         />
                     </div>
                 ) : (
@@ -365,42 +365,42 @@ const AdminAttendance = () => {
                             type="date"
                             value={startDate}
                             onChange={(e) => setStartDate(e.target.value)}
-                            className="bg-[#f0e4d4]/20 border-2 border-transparent focus:border-[#fa2742] rounded-xl py-2 px-4 text-[#373833] font-bold outline-none"
+                            className="bg-[#f0e4d4]/20 border-2 border-transparent focus:border-[#453abc] rounded-xl py-2 px-4 text-[#191a23] font-bold outline-none"
                         />
-                        <span className="text-[#373833]/40 font-black">TO</span>
+                        <span className="text-[#191a23]/40 font-black">TO</span>
                         <input
                             type="date"
                             value={endDate}
                             onChange={(e) => setEndDate(e.target.value)}
-                            className="bg-[#f0e4d4]/20 border-2 border-transparent focus:border-[#fa2742] rounded-xl py-2 px-4 text-[#373833] font-bold outline-none"
+                            className="bg-[#f0e4d4]/20 border-2 border-transparent focus:border-[#453abc] rounded-xl py-2 px-4 text-[#191a23] font-bold outline-none"
                         />
                     </div>
                 )}
 
                 <div className="flex-1 min-w-[200px] relative">
-                    <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-[#373833]/20" size={18} />
+                    <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-[#191a23]/20" size={18} />
                     <input
                         type="text"
                         placeholder="Search personnel..."
                         value={searchQuery}
                         onChange={(e) => setSearchQuery(e.target.value)}
-                        className="w-full bg-[#f0e4d4]/20 border-2 border-transparent focus:border-[#fa2742] rounded-xl py-2 pl-12 pr-4 text-[#373833] font-bold outline-none placeholder:text-[#373833]/20"
+                        className="w-full bg-[#f0e4d4]/20 border-2 border-transparent focus:border-[#453abc] rounded-xl py-2 pl-12 pr-4 text-[#191a23] font-bold outline-none placeholder:text-[#191a23]/20"
                     />
                 </div>
             </div>
 
             {loading ? (
                 <div className="py-20 text-center">
-                    <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#fa2742] mx-auto"></div>
-                    <p className="mt-4 text-[#373833]/40 font-black uppercase tracking-widest text-[10px]">Synchronizing Matrix...</p>
+                    <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#453abc] mx-auto"></div>
+                    <p className="mt-4 text-[#191a23]/40 font-black uppercase tracking-widest text-[10px]">Synchronizing Matrix...</p>
                 </div>
             ) : (
                 <div className="space-y-12">
                     {/* Detailed Daily Table Section */}
                     <div>
                         <div className="flex items-center justify-between mb-8">
-                            <h3 className="text-xl font-black text-[#373833] uppercase tracking-widest flex items-center gap-3">
-                                <Clock size={24} className="text-[#fa2742]" />
+                            <h3 className="text-xl font-black text-[#191a23] uppercase tracking-widest flex items-center gap-3">
+                                <Clock size={24} className="text-[#453abc]" />
                                 Daily Temporal Log
                             </h3>
                             <div className="h-px flex-1 bg-gray-100 mx-8"></div>
@@ -411,31 +411,31 @@ const AdminAttendance = () => {
                                 <table className="w-full text-left border-collapse">
                                     <thead>
                                         <tr className="bg-gray-50/50 border-b border-gray-100">
-                                            <th className="p-6 text-[10px] font-black uppercase tracking-widest text-[#373833]/40">Date</th>
-                                            <th className="p-6 text-[10px] font-black uppercase tracking-widest text-[#373833]/40">Personnel</th>
-                                            <th className="p-6 text-[10px] font-black uppercase tracking-widest text-[#373833]/40">Clock In</th>
-                                            <th className="p-6 text-[10px] font-black uppercase tracking-widest text-[#373833]/40">Clock Out</th>
-                                            <th className="p-6 text-[10px] font-black uppercase tracking-widest text-[#373833]/40">Break (Mins)</th>
-                                            <th className="p-6 text-[10px] font-black uppercase tracking-widest text-[#373833]/40">Status</th>
-                                            <th className="p-6 text-[10px] font-black uppercase tracking-widest text-[#373833]/40 text-center">Points</th>
+                                            <th className="p-6 text-[10px] font-black uppercase tracking-widest text-[#191a23]/40">Date</th>
+                                            <th className="p-6 text-[10px] font-black uppercase tracking-widest text-[#191a23]/40">Personnel</th>
+                                            <th className="p-6 text-[10px] font-black uppercase tracking-widest text-[#191a23]/40">Clock In</th>
+                                            <th className="p-6 text-[10px] font-black uppercase tracking-widest text-[#191a23]/40">Clock Out</th>
+                                            <th className="p-6 text-[10px] font-black uppercase tracking-widest text-[#191a23]/40">Break (Mins)</th>
+                                            <th className="p-6 text-[10px] font-black uppercase tracking-widest text-[#191a23]/40">Status</th>
+                                            <th className="p-6 text-[10px] font-black uppercase tracking-widest text-[#191a23]/40 text-center">Points</th>
                                         </tr>
                                     </thead>
                                     <tbody className="divide-y divide-gray-50">
                                         {filteredAttendanceList.length > 0 ? filteredAttendanceList.map((record) => (
                                             <tr key={record._id} className="hover:bg-gray-50/50 transition-colors group">
-                                                <td className="p-6 text-sm font-bold text-[#373833]">{new Date(record.date).toLocaleDateString()}</td>
+                                                <td className="p-6 text-sm font-bold text-[#191a23]">{new Date(record.date).toLocaleDateString()}</td>
                                                 <td className="p-6">
                                                     <div className="flex items-center gap-3">
-                                                        <div className="w-8 h-8 bg-[#373833] text-[#fa2742] rounded-lg flex items-center justify-center text-xs font-black group-hover:bg-[#fa2742] group-hover:text-white transition-colors">
+                                                        <div className="w-8 h-8 bg-[#191a23] text-[#453abc] rounded-lg flex items-center justify-center text-xs font-black group-hover:bg-[#453abc] group-hover:text-white transition-colors">
                                                             {record.user?.name?.charAt(0)}
                                                         </div>
-                                                        <span className="text-sm font-black text-[#373833]">{record.user?.name}</span>
+                                                        <span className="text-sm font-black text-[#191a23]">{record.user?.name}</span>
                                                     </div>
                                                 </td>
                                                 <td className="p-6 font-mono text-xs text-blue-600 font-bold">
                                                     {record.clockIn ? new Date(record.clockIn).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) : '---'}
                                                 </td>
-                                                <td className="p-6 font-mono text-xs text-[#fa2742] font-bold">
+                                                <td className="p-6 font-mono text-xs text-[#453abc] font-bold">
                                                     {record.clockOut ? new Date(record.clockOut).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) : '---'}
                                                 </td>
                                                 <td className="p-6 text-xs font-bold text-gray-500">{record.totalBreakMinutes || 0}m</td>
@@ -450,14 +450,14 @@ const AdminAttendance = () => {
                                                     </span>
                                                 </td>
                                                 <td className="p-6 text-center">
-                                                    <div className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-[#f0e4d4] text-[#373833] text-xs font-black shadow-sm">
+                                                    <div className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-[#f0e4d4] text-[#191a23] text-xs font-black shadow-sm">
                                                         {record.points || 0}
                                                     </div>
                                                 </td>
                                             </tr>
                                         )) : (
                                             <tr>
-                                                <td colSpan="7" className="p-12 text-center text-[#373833]/20 italic font-bold uppercase tracking-widest">
+                                                <td colSpan="7" className="p-12 text-center text-[#191a23]/20 italic font-bold uppercase tracking-widest">
                                                     No historical event data found in this buffer.
                                                 </td>
                                             </tr>
@@ -474,3 +474,4 @@ const AdminAttendance = () => {
 };
 
 export default AdminAttendance;
+

@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { useAuth } from '../../../../context/AuthContext';
 import { User, Mail, Shield, Lock, Bug } from 'lucide-react';
 
@@ -10,22 +10,22 @@ const SQASettings = () => {
         name: user?.name || 'Sarah Tester',
         position: user?.role || 'QA Lead',
         email: user?.email || 'sarah.qa@techtide.com',
-        password: '••••••••••••'
+        password: 'â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢'
     };
 
     return (
         <div className="max-w-2xl mx-auto">
-            <h1 className="text-3xl font-bold text-[#373833] mb-8">QA Profile Settings</h1>
+            <h1 className="text-3xl font-bold text-[#191a23] mb-8">QA Profile Settings</h1>
 
             <div className="bg-white p-8 rounded-2xl shadow-sm border border-gray-200">
                 <div className="flex items-center space-x-6 mb-8 border-b border-gray-100 pb-8">
                     <img
                         src={`https://ui-avatars.com/api/?name=${userData.name}&background=fa2742&color=fff&size=128`}
                         alt={userData.name}
-                        className="w-24 h-24 rounded-full border-4 border-[#e8eae3] shadow-lg"
+                        className="w-24 h-24 rounded-full border-4 border-[#ffffff] shadow-lg"
                     />
                     <div>
-                        <h2 className="text-2xl font-bold text-[#373833]">{userData.name}</h2>
+                        <h2 className="text-2xl font-bold text-[#191a23]">{userData.name}</h2>
                         <div className="flex items-center gap-2 text-gray-500 font-medium">
                             <Bug size={16} />
                             <span>{userData.position}</span>
@@ -36,8 +36,8 @@ const SQASettings = () => {
                 <div className="space-y-6">
                     {/* Name Field */}
                     <div>
-                        <label className="block text-sm font-bold text-[#373833] mb-2 flex items-center gap-2">
-                            <User size={16} className="text-[#fa2742]" />
+                        <label className="block text-sm font-bold text-[#191a23] mb-2 flex items-center gap-2">
+                            <User size={16} className="text-[#453abc]" />
                             Full Name
                         </label>
                         <input
@@ -50,8 +50,8 @@ const SQASettings = () => {
 
                     {/* Position Field */}
                     <div>
-                        <label className="block text-sm font-bold text-[#373833] mb-2 flex items-center gap-2">
-                            <Shield size={16} className="text-[#fa2742]" />
+                        <label className="block text-sm font-bold text-[#191a23] mb-2 flex items-center gap-2">
+                            <Shield size={16} className="text-[#453abc]" />
                             Position
                         </label>
                         <input
@@ -64,8 +64,8 @@ const SQASettings = () => {
 
                     {/* Work Email Field */}
                     <div>
-                        <label className="block text-sm font-bold text-[#373833] mb-2 flex items-center gap-2">
-                            <Mail size={16} className="text-[#fa2742]" />
+                        <label className="block text-sm font-bold text-[#191a23] mb-2 flex items-center gap-2">
+                            <Mail size={16} className="text-[#453abc]" />
                             Work Email
                         </label>
                         <input
@@ -78,8 +78,8 @@ const SQASettings = () => {
 
                     {/* Password Field */}
                     <div>
-                        <label className="block text-sm font-bold text-[#373833] mb-2 flex items-center gap-2">
-                            <Lock size={16} className="text-[#fa2742]" />
+                        <label className="block text-sm font-bold text-[#191a23] mb-2 flex items-center gap-2">
+                            <Lock size={16} className="text-[#453abc]" />
                             Password
                         </label>
                         <div className="relative">
@@ -101,3 +101,4 @@ const SQASettings = () => {
 };
 
 export default SQASettings;
+

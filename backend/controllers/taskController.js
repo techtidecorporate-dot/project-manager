@@ -13,6 +13,21 @@ const getTasks = asyncHandler(async (req, res) => {
         query.project = req.query.projectId;
     }
 
+    // Filter by milestone if provided
+    if (req.query.milestoneId) {
+        query.milestone = req.query.milestoneId;
+    }
+
+    // Filter by phase if provided
+    if (req.query.phase) {
+        query.phase = req.query.phase;
+    }
+
+    // Filter by parent task (subtasks)
+    if (req.query.parentTask) {
+        query.parentTask = req.query.parentTask;
+    }
+
     // Filter by status if provided
     if (req.query.status) {
         query.status = req.query.status;

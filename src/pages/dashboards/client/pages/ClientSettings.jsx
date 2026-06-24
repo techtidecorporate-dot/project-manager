@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { useAuth } from '../../../../context/AuthContext';
 import { User, Mail, Shield, Lock, Briefcase } from 'lucide-react';
 
@@ -11,22 +11,22 @@ const ClientSettings = () => {
         position: user?.role || 'Company Representative',
         email: user?.email || 'client@futurecorp.com',
         company: 'Future Corp Inc.',
-        password: '••••••••••••'
+        password: 'â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢'
     };
 
     return (
         <div className="max-w-2xl mx-auto">
-            <h1 className="text-3xl font-bold text-[#373833] mb-8">Account Settings</h1>
+            <h1 className="text-3xl font-bold text-[#191a23] mb-8">Account Settings</h1>
 
             <div className="bg-white p-8 rounded-2xl shadow-sm border border-gray-200">
                 <div className="flex items-center space-x-6 mb-8 border-b border-gray-100 pb-8">
                     <img
                         src={`https://ui-avatars.com/api/?name=${userData.name}&background=fa2742&color=fff&size=128`}
                         alt={userData.name}
-                        className="w-24 h-24 rounded-full border-4 border-[#e8eae3] shadow-lg"
+                        className="w-24 h-24 rounded-full border-4 border-[#ffffff] shadow-lg"
                     />
                     <div>
-                        <h2 className="text-2xl font-bold text-[#373833]">{userData.name}</h2>
+                        <h2 className="text-2xl font-bold text-[#191a23]">{userData.name}</h2>
                         <div className="flex items-center gap-2 text-gray-500 font-medium">
                             <Briefcase size={16} />
                             <span>{userData.company}</span>
@@ -37,8 +37,8 @@ const ClientSettings = () => {
                 <div className="space-y-6">
                     {/* Name Field */}
                     <div>
-                        <label className="block text-sm font-bold text-[#373833] mb-2 flex items-center gap-2">
-                            <User size={16} className="text-[#fa2742]" />
+                        <label className="block text-sm font-bold text-[#191a23] mb-2 flex items-center gap-2">
+                            <User size={16} className="text-[#453abc]" />
                             Full Name
                         </label>
                         <input
@@ -51,8 +51,8 @@ const ClientSettings = () => {
 
                     {/* Position Field */}
                     <div>
-                        <label className="block text-sm font-bold text-[#373833] mb-2 flex items-center gap-2">
-                            <Shield size={16} className="text-[#fa2742]" />
+                        <label className="block text-sm font-bold text-[#191a23] mb-2 flex items-center gap-2">
+                            <Shield size={16} className="text-[#453abc]" />
                             Role
                         </label>
                         <input
@@ -65,8 +65,8 @@ const ClientSettings = () => {
 
                     {/* Company Field */}
                     <div>
-                        <label className="block text-sm font-bold text-[#373833] mb-2 flex items-center gap-2">
-                            <Briefcase size={16} className="text-[#fa2742]" />
+                        <label className="block text-sm font-bold text-[#191a23] mb-2 flex items-center gap-2">
+                            <Briefcase size={16} className="text-[#453abc]" />
                             Company
                         </label>
                         <input
@@ -79,8 +79,8 @@ const ClientSettings = () => {
 
                     {/* Work Email Field */}
                     <div>
-                        <label className="block text-sm font-bold text-[#373833] mb-2 flex items-center gap-2">
-                            <Mail size={16} className="text-[#fa2742]" />
+                        <label className="block text-sm font-bold text-[#191a23] mb-2 flex items-center gap-2">
+                            <Mail size={16} className="text-[#453abc]" />
                             Email Address
                         </label>
                         <input
@@ -93,8 +93,8 @@ const ClientSettings = () => {
 
                     {/* Password Field */}
                     <div>
-                        <label className="block text-sm font-bold text-[#373833] mb-2 flex items-center gap-2">
-                            <Lock size={16} className="text-[#fa2742]" />
+                        <label className="block text-sm font-bold text-[#191a23] mb-2 flex items-center gap-2">
+                            <Lock size={16} className="text-[#453abc]" />
                             Password
                         </label>
                         <div className="relative">
@@ -116,3 +116,4 @@ const ClientSettings = () => {
 };
 
 export default ClientSettings;
+

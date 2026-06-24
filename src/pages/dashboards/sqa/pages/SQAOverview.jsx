@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { Play, Pause, MessageSquare, Bug, ClipboardCheck, AlertTriangle } from 'lucide-react';
 
 const SQAOverview = () => {
@@ -17,12 +17,12 @@ const SQAOverview = () => {
 
     return (
         <div className="space-y-6">
-            <h1 className="text-3xl font-bold text-[#373833]">SQA Dashboard</h1>
+            <h1 className="text-3xl font-bold text-[#191a23]">SQA Dashboard</h1>
 
             {/* Attendance & Status Section */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-200">
-                    <h2 className="text-xl font-bold text-[#373833] mb-4">Attendance</h2>
+                    <h2 className="text-xl font-bold text-[#191a23] mb-4">Attendance</h2>
                     <div className="flex items-center justify-between">
                         <div>
                             <p className="text-sm text-gray-500">Current Status</p>
@@ -39,7 +39,7 @@ const SQAOverview = () => {
                             onClick={handleToggleWork}
                             className={`px-6 py-3 rounded-xl font-bold flex items-center gap-2 transition-all ${isWorking
                                     ? 'bg-red-50 text-red-600 border border-red-200 hover:bg-red-100'
-                                    : 'bg-[#fa2742] text-white shadow-lg shadow-red-200 hover:shadow-red-300'
+                                    : 'bg-[#453abc] text-white shadow-lg shadow-red-200 hover:shadow-red-300'
                                 }`}
                         >
                             {isWorking ? (
@@ -58,11 +58,11 @@ const SQAOverview = () => {
                 </div>
 
                 <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-200">
-                    <h2 className="text-xl font-bold text-[#373833] mb-4">Internal Chat</h2>
+                    <h2 className="text-xl font-bold text-[#191a23] mb-4">Internal Chat</h2>
                     <div className="h-32 bg-gray-50 rounded-xl flex flex-col items-center justify-center text-gray-400 border border-dashed border-gray-200">
                         <MessageSquare size={32} className="mb-2 opacity-50" />
                         <p className="text-sm font-medium">No new messages</p>
-                        <button className="mt-4 text-[#fa2742] text-sm font-bold hover:underline">
+                        <button className="mt-4 text-[#453abc] text-sm font-bold hover:underline">
                             Open Chat
                         </button>
                     </div>
@@ -77,7 +77,7 @@ const SQAOverview = () => {
                     </div>
                     <div>
                         <p className="text-sm text-gray-500">Critical Bugs</p>
-                        <p className="text-2xl font-bold text-[#373833]">3</p>
+                        <p className="text-2xl font-bold text-[#191a23]">3</p>
                     </div>
                 </div>
                 <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-200 flex items-center gap-4">
@@ -86,7 +86,7 @@ const SQAOverview = () => {
                     </div>
                     <div>
                         <p className="text-sm text-gray-500">Test Cases</p>
-                        <p className="text-2xl font-bold text-[#373833]">24/28</p>
+                        <p className="text-2xl font-bold text-[#191a23]">24/28</p>
                     </div>
                 </div>
                 <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-200 flex items-center gap-4">
@@ -95,20 +95,20 @@ const SQAOverview = () => {
                     </div>
                     <div>
                         <p className="text-sm text-gray-500">Pending Review</p>
-                        <p className="text-2xl font-bold text-[#373833]">5</p>
+                        <p className="text-2xl font-bold text-[#191a23]">5</p>
                     </div>
                 </div>
             </div>
 
             {/* Work Given / Current Tasks */}
             <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-200">
-                <h2 className="text-xl font-bold text-[#373833] mb-6">Current Testing Tasks</h2>
+                <h2 className="text-xl font-bold text-[#191a23] mb-6">Current Testing Tasks</h2>
                 <div className="space-y-4">
                     {/* Placeholder tasks */}
                     {[1, 2].map((i) => (
                         <div key={i} className="p-4 border border-gray-100 rounded-xl hover:border-gray-200 transition-colors bg-gray-50/50">
                             <div className="flex justify-between items-start mb-2">
-                                <h3 className="font-bold text-[#373833]">Security Kernel Stress Test</h3>
+                                <h3 className="font-bold text-[#191a23]">Security Kernel Stress Test</h3>
                                 <span className="bg-orange-100 text-orange-700 text-xs px-2 py-1 rounded-lg font-bold">
                                     In Progress
                                 </span>
@@ -129,3 +129,4 @@ const SQAOverview = () => {
 };
 
 export default SQAOverview;
+

@@ -41,10 +41,10 @@ const Login = () => {
     };
 
     return (
-        <div className="min-h-screen bg-[#e8eae3] flex items-center justify-center p-6 font-sans selection:bg-[#fa2742] selection:text-[#373833]">
+        <div className="min-h-screen bg-white flex items-center justify-center p-6 font-sans selection:bg-[#453abc] selection:text-white">
             {/* Back Button */}
-            <Link to="/" className="fixed top-8 left-8 flex items-center space-x-2 text-[#373833]/60 hover:text-[#373833] transition-colors group">
-                <div className="w-10 h-10 rounded-xl bg-[#e8eae3]/20 flex items-center justify-center group-hover:bg-[#e8eae3] transition-colors shadow-sm border border-white/10">
+            <Link to="/" className="fixed top-8 left-8 flex items-center space-x-2 text-[#191a23]/60 hover:text-[#191a23] transition-colors group">
+                <div className="w-10 h-10 rounded-xl bg-[#e9ebef]/50 flex items-center justify-center group-hover:bg-[#e9ebef] transition-colors shadow-sm border border-[--border]">
                     <ArrowLeft size={18} />
                 </div>
                 <span className="text-sm font-black uppercase tracking-widest">Back to Home</span>
@@ -57,10 +57,10 @@ const Login = () => {
             >
                 <div className="text-center mb-10">
                     <div className="flex items-center justify-center space-x-3 mb-8">
-                        <div className="w-14 h-14 bg-[#fa2742] rounded-[20px] flex items-center justify-center shadow-2xl">
-                            <ShieldCheck className="text-[#373833]" size={28} />
+                        <div className="w-14 h-14 bg-gradient-to-br from-[#453abc] to-[#60c3e3] rounded-[20px] flex items-center justify-center shadow-2xl">
+                            <ShieldCheck className="text-white" size={28} />
                         </div>
-                        <h1 className="text-4xl font-black text-[#373833] tracking-tighter">
+                        <h1 className="text-4xl font-black text-[#191a23] tracking-tighter">
                             Task Management
                         </h1>
                     </div>
@@ -71,14 +71,14 @@ const Login = () => {
 
                     <form onSubmit={handleSubmit} className="space-y-6 relative z-10">
                         <div className="space-y-2">
-                            <label className="text-[10px] font-black text-[#373833] uppercase tracking-widest ml-1">Email</label>
+                            <label className="text-[10px] font-black text-[#191a23] uppercase tracking-widest ml-1">Email</label>
                             <div className="relative group">
-                                <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-[#373833] group-focus-within:text-[#373833] transition-colors" size={18} />
+                                <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-[#6b7280] group-focus-within:text-[#453abc] transition-colors" size={18} />
                                 <input
                                     type="email"
                                     required
                                     value={credentials.email}
-                                    className="w-full bg-[#f5f5f5] border border-[#f5f5f5] rounded-2xl py-4 pl-12 pr-6 text-[#373833] outline-none focus:border-[#fa2742] focus:ring-4 focus:ring-[#fa2742]/5 transition-all font-bold placeholder:text-[#373833]"
+                                    className="w-full bg-[#e9ebef] border border-[#e9ebef] rounded-2xl py-4 pl-12 pr-6 text-[#191a23] outline-none focus:border-[#453abc] focus:ring-4 focus:ring-[#453abc]/10 transition-all font-bold placeholder:text-[#6b7280]"
                                     placeholder="admin@techtide.io"
                                     onChange={(e) => setCredentials({ ...credentials, email: e.target.value })}
                                 />
@@ -86,14 +86,14 @@ const Login = () => {
                         </div>
 
                         <div className="space-y-2">
-                            <label className="text-[10px] font-black text-[#373833] uppercase tracking-widest ml-1">Password</label>
+                            <label className="text-[10px] font-black text-[#191a23] uppercase tracking-widest ml-1">Password</label>
                             <div className="relative group">
-                                <Lock className="absolute left-4 top-1/2 -translate-y-1/2 text-[#373833] group-focus-within:text-[#373833] transition-colors" size={18} />
+                                <Lock className="absolute left-4 top-1/2 -translate-y-1/2 text-[#6b7280] group-focus-within:text-[#453abc] transition-colors" size={18} />
                                 <input
                                     type="password"
                                     required
                                     value={credentials.password}
-                                    className="w-full bg-[#f5f5f5] border border-[#f5f5f5] rounded-2xl py-4 pl-12 pr-6 text-[#373833] outline-none focus:border-[#fa2742] focus:ring-4 focus:ring-[#fa2742]/5 transition-all font-bold placeholder:text-[#373833]"
+                                    className="w-full bg-[#e9ebef] border border-[#e9ebef] rounded-2xl py-4 pl-12 pr-6 text-[#191a23] outline-none focus:border-[#453abc] focus:ring-4 focus:ring-[#453abc]/10 transition-all font-bold placeholder:text-[#6b7280]"
                                     placeholder="••••••••"
                                     onChange={(e) => setCredentials({ ...credentials, password: e.target.value })}
                                 />
@@ -103,7 +103,7 @@ const Login = () => {
                         <button
                             type="submit"
                             disabled={loading}
-                            className="w-full bg-[#fa2742] hover:opacity-90 text-[#373833] py-5 rounded-2xl font-black uppercase tracking-widest text-xs flex items-center justify-center space-x-3 transition-all active:scale-[0.98] shadow-xl group disabled:opacity-50 disabled:cursor-not-allowed"
+                            className="w-full bg-gradient-to-r from-[#453abc] to-[#60c3e3] hover:opacity-90 text-white py-5 rounded-2xl font-black uppercase tracking-widest text-xs flex items-center justify-center space-x-3 transition-all active:scale-[0.98] shadow-xl group disabled:opacity-50 disabled:cursor-not-allowed"
                         >
                             <AnimatePresence mode="wait">
                                 {loading ? (

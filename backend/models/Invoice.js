@@ -18,6 +18,9 @@ const invoiceSchema = mongoose.Schema(
             type: String,
             required: true,
         },
+        documentPublicId: {
+            type: String,
+        },
         status: {
             type: String,
             enum: ['Unpaid', 'Paid', 'Sent', 'Overdue', 'Cancelled'],
@@ -30,6 +33,9 @@ const invoiceSchema = mongoose.Schema(
             type: Number,
         },
         receiptURL: {
+            type: String,
+        },
+        receiptPublicId: {
             type: String,
         }
     },

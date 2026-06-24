@@ -7,18 +7,18 @@ import { createNotification } from './notificationController.js';
 // @access  Private
 const getRequests = async (req, res) => {
     try {
-        let requests;
-        if (req.user.role === 'ADMIN') {
-            requests = await Request.find({})
-                .populate('user', 'name email role')
-                .populate('messages.sender', 'name email role')
-                .sort({ createdAt: -1 });
-        } else {
-            requests = await Request.find({ user: req.user._id })
-                .populate('user', 'name email role')
-                .populate('messages.sender', 'name email role')
-                .sort({ createdAt: -1 });
+        let filter = {};
+        if (req.query.projectId) {
+            filter.project = req.query.projectId;
         }
+        if (req.user.role !== 'ADMIN') {
+            filter.user = req.user._id;
+        }
+        const requests = await Request.find(filter)
+            .populate('user', 'name email role')
+            .populate('project', 'title')
+            .populate('messages.sender', 'name email role')
+            .sort({ createdAt: -1 });
         res.json(requests);
     } catch (error) {
         res.status(500).json({ message: error.message });
@@ -29,7 +29,7 @@ const getRequests = async (req, res) => {
 // @route   POST /api/requests
 // @access  Private
 const createRequest = async (req, res) => {
-    const { title, description, type, priority, category } = req.body;
+    const { title, description, type, priority, category, project } = req.body;
 
     try {
         const request = await Request.create({
@@ -38,6 +38,7 @@ const createRequest = async (req, res) => {
             type,
             priority,
             category: category || 'Request',
+            project: project || undefined,
             user: req.user._id,
             messages: [
                 {
@@ -59,7 +60,11 @@ const createRequest = async (req, res) => {
             );
         }
 
-        res.status(201).json(request);
+        const populated = await Request.findById(request._id)
+            .populate('user', 'name email role')
+            .populate('project', 'title')
+            .populate('messages.sender', 'name email role');
+        res.status(201).json(populated);
     } catch (error) {
         res.status(400).json({ message: error.message });
     }

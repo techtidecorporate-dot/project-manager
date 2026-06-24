@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+﻿import React, { useState, useEffect } from 'react';
 import {
     CheckCircle,
     Calendar,
@@ -67,29 +67,29 @@ const SQACompletedTasks = () => {
         <div>
             <div className="flex items-center justify-between mb-8">
                 <div>
-                    <h1 className="text-3xl font-bold text-[#373833]">Completed Validations</h1>
-                    <p className="text-[#373833]/60 font-medium tracking-tight">History of all approved and verified phases.</p>
+                    <h1 className="text-3xl font-bold text-[#191a23]">Completed Validations</h1>
+                    <p className="text-[#191a23]/60 font-medium tracking-tight">History of all approved and verified phases.</p>
                 </div>
-                <div className="bg-[#373833]/5 px-5 py-2.5 rounded-2xl border border-[#373833]/10">
-                    <span className="text-sm font-black text-[#373833] uppercase tracking-widest">
+                <div className="bg-[#191a23]/5 px-5 py-2.5 rounded-2xl border border-[#191a23]/10">
+                    <span className="text-sm font-black text-[#191a23] uppercase tracking-widest">
                         {completedPhases.length} Validated & Rejected
                     </span>
                 </div>
             </div>
 
             {loading ? (
-                <div className="text-center py-20 text-[#373833]/20 italic font-medium">Loading history...</div>
+                <div className="text-center py-20 text-[#191a23]/20 italic font-medium">Loading history...</div>
             ) : completedPhases.length > 0 ? (
                 <div className="space-y-4">
                     {completedPhases.map((phase, idx) => (
-                        <div key={idx} className="bg-white p-6 rounded-[32px] shadow-sm border border-[#373833]/5 opacity-80 hover:opacity-100 transition-all hover:shadow-md group">
+                        <div key={idx} className="bg-white p-6 rounded-[32px] shadow-sm border border-[#191a23]/5 opacity-80 hover:opacity-100 transition-all hover:shadow-md group">
                             <div className="flex justify-between items-start mb-4">
                                 <div className="space-y-1">
-                                    <div className="flex items-center space-x-2 text-[10px] font-black uppercase tracking-widest text-[#373833]/40">
+                                    <div className="flex items-center space-x-2 text-[10px] font-black uppercase tracking-widest text-[#191a23]/40">
                                         <Layout size={14} />
                                         <span>{phase.project?.title}</span>
                                     </div>
-                                    <h3 className="text-lg font-bold text-[#373833] group-hover:text-[#fa2742] transition-colors">{phase.name}</h3>
+                                    <h3 className="text-lg font-bold text-[#191a23] group-hover:text-[#453abc] transition-colors">{phase.name}</h3>
                                 </div>
                                 <div className="flex items-center space-x-2">
                                     {phase.status === 'Completed' ? (
@@ -117,18 +117,18 @@ const SQACompletedTasks = () => {
                                     </p>
                                     <div className="space-y-1">
                                         {phase.errors.slice(0, 2).map((err, ei) => (
-                                            <p key={ei} className="text-xs text-red-800 font-bold truncate">• {err.name || err.message}</p>
+                                            <p key={ei} className="text-xs text-red-800 font-bold truncate">â€¢ {err.name || err.message}</p>
                                         ))}
                                         {phase.errors.length > 2 && <p className="text-[9px] text-red-400 font-medium ml-2">+{phase.errors.length - 2} more issues</p>}
                                     </div>
                                 </div>
                             )}
 
-                            <p className="text-sm text-[#373833]/60 mb-6 italic truncate">
+                            <p className="text-sm text-[#191a23]/60 mb-6 italic truncate">
                                 "{phase.description || "No description provided."}"
                             </p>
 
-                            <div className="flex justify-between items-center text-[10px] font-black uppercase tracking-widest text-[#373833]/30">
+                            <div className="flex justify-between items-center text-[10px] font-black uppercase tracking-widest text-[#191a23]/30">
                                 <div className="flex items-center space-x-4">
                                     <div className="flex items-center space-x-1">
                                         <Calendar size={12} />
@@ -147,11 +147,11 @@ const SQACompletedTasks = () => {
                     ))}
                 </div>
             ) : (
-                <div className="text-center py-24 bg-white rounded-[40px] border-2 border-dashed border-[#373833]/10">
+                <div className="text-center py-24 bg-white rounded-[40px] border-2 border-dashed border-[#191a23]/10">
                     <div className="flex flex-col items-center justify-center space-y-4">
-                        <CheckCircle2 size={64} className="text-[#373833]/10" />
-                        <h3 className="text-xl font-bold text-[#373833]/40 tracking-tight">No validations yet</h3>
-                        <p className="text-sm text-[#373833]/30 font-medium">Approved phases will be archived here.</p>
+                        <CheckCircle2 size={64} className="text-[#191a23]/10" />
+                        <h3 className="text-xl font-bold text-[#191a23]/40 tracking-tight">No validations yet</h3>
+                        <p className="text-sm text-[#191a23]/30 font-medium">Approved phases will be archived here.</p>
                     </div>
                 </div>
             )}
@@ -160,3 +160,4 @@ const SQACompletedTasks = () => {
 };
 
 export default SQACompletedTasks;
+

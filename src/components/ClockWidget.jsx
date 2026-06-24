@@ -92,52 +92,52 @@ const ClockWidget = () => {
     const canTakeBreak = status === 'Clocked In' && totalBreakMinutes < 60;
 
     return (
-        <div className="bg-white rounded-[32px] shadow-xl border border-[#373833]/5 p-6 mb-10 flex flex-col md:flex-row items-center justify-between gap-6 relative overflow-hidden group">
+        <div className="bg-white rounded-[32px] shadow-xl border border-[#191a23]/5 p-6 mb-10 flex flex-col md:flex-row items-center justify-between gap-6 relative overflow-hidden group">
             {/* Ambient Background Element */}
-            <div className={`absolute -right-10 -top-10 w-40 h-40 rounded-full blur-[60px] opacity-10 transition-all duration-1000 ${status === 'Clocked In' ? 'bg-green-500' : status === 'On Break' ? 'bg-yellow-500' : 'bg-[#fa2742]'}`}></div>
+            <div className={`absolute -right-10 -top-10 w-40 h-40 rounded-full blur-[60px] opacity-10 transition-all duration-1000 ${status === 'Clocked In' ? 'bg-green-500' : status === 'On Break' ? 'bg-yellow-500' : 'bg-[#d4183d]'}`}></div>
 
             <div className="flex flex-col md:flex-row items-center gap-8 relative z-10 w-full md:w-auto">
                 <div className="flex items-center space-x-4">
-                    <div className="w-14 h-14 bg-[#f0e4d4] rounded-2xl flex items-center justify-center text-[#373833] shadow-inner group-hover:scale-110 transition-transform">
+                    <div className="w-14 h-14 bg-gradient-to-br from-[#453abc]/10 to-[#60c3e3]/10 rounded-2xl flex items-center justify-center text-[#453abc] shadow-inner group-hover:scale-110 transition-transform">
                         <Clock size={28} />
                     </div>
                     <div>
-                        <p className="text-[10px] text-[#373833]/40 font-black uppercase tracking-[0.2em]">Current Time</p>
-                        <p className="text-2xl font-black text-[#373833] font-mono tracking-tighter">{currentTime.toLocaleTimeString()}</p>
+                        <p className="text-[10px] text-[#6b7280] font-black uppercase tracking-[0.2em]">Current Time</p>
+                        <p className="text-2xl font-black text-[#191a23] font-mono tracking-tighter">{currentTime.toLocaleTimeString()}</p>
                     </div>
                 </div>
 
-                <div className="hidden md:block h-12 w-px bg-[#373833]/10" />
+                <div className="hidden md:block h-12 w-px bg-[#191a23]/10" />
 
                 <div className="flex items-center space-x-10">
                     <div>
-                        <p className="text-[10px] text-[#373833]/40 font-black uppercase tracking-[0.2em]">Session Status</p>
+                        <p className="text-[10px] text-[#6b7280] font-black uppercase tracking-[0.2em]">Session Status</p>
                         <div className="flex items-center space-x-2 mt-1">
                             <span className={`w-2.5 h-2.5 rounded-full animate-pulse shadow-[0_0_8px_currentColor] ${status === 'Clocked In' ? 'text-green-500 bg-green-500' :
-                                status === 'On Break' ? 'text-yellow-500 bg-yellow-500' : 'text-[#fa2742] bg-[#fa2742]'
+                                status === 'On Break' ? 'text-yellow-500 bg-yellow-500' : 'text-[#d4183d] bg-[#d4183d]'
                                 }`} />
-                            <p className="text-sm font-black text-[#373833] uppercase tracking-widest">{status}</p>
+                            <p className="text-sm font-black text-[#191a23] uppercase tracking-widest">{status}</p>
                         </div>
                     </div>
 
                     {attendance?.clockIn && (
                         <>
                             <div className="hidden sm:block">
-                                <p className="text-[10px] text-[#373833]/40 font-black uppercase tracking-[0.2em]">Clock In</p>
-                                <p className="text-sm font-black text-[#373833] mt-1">
+                                <p className="text-[10px] text-[#6b7280] font-black uppercase tracking-[0.2em]">Clock In</p>
+                                <p className="text-sm font-black text-[#191a23] mt-1">
                                     {new Date(attendance.clockIn).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
                                 </p>
                             </div>
                             <div>
-                                <p className="text-[10px] text-[#373833]/40 font-black uppercase tracking-[0.2em]">Break Usage</p>
+                                <p className="text-[10px] text-[#6b7280] font-black uppercase tracking-[0.2em]">Break Usage</p>
                                 <div className="flex items-center space-x-3 mt-1">
-                                    <div className="w-20 h-1.5 bg-[#f0e4d4] rounded-full overflow-hidden">
+                                    <div className="w-20 h-1.5 bg-[#e9ebef] rounded-full overflow-hidden">
                                         <div
-                                            className={`h-full transition-all duration-500 ${totalBreakMinutes > 45 ? 'bg-red-500' : 'bg-[#373833]'}`}
+                                            className={`h-full transition-all duration-500 ${totalBreakMinutes > 45 ? 'bg-red-500' : 'bg-[#453abc]'}`}
                                             style={{ width: `${(totalBreakMinutes / 60) * 100}%` }}
                                         />
                                     </div>
-                                    <p className="text-[10px] font-black text-[#373833]">{totalBreakMinutes}m</p>
+                                    <p className="text-[10px] font-black text-[#191a23]">{totalBreakMinutes}m</p>
                                 </div>
                             </div>
                         </>
@@ -149,7 +149,7 @@ const ClockWidget = () => {
                 {status === 'Clocked Out' ? (
                     <button
                         onClick={handleClockIn}
-                        className="flex-1 md:flex-none flex items-center justify-center space-x-3 px-10 py-4 bg-[#373833] hover:bg-[#fa2742] text-white rounded-2xl font-black text-xs uppercase tracking-[0.2em] transition-all shadow-xl active:scale-95 group/btn"
+                        className="flex-1 md:flex-none flex items-center justify-center space-x-3 px-10 py-4 bg-gradient-to-r from-[#453abc] to-[#60c3e3] hover:opacity-90 text-white rounded-2xl font-black text-xs uppercase tracking-[0.2em] transition-all shadow-xl active:scale-95 group/btn"
                     >
                         <Play size={18} className="group-hover:translate-x-1 transition-transform" fill="currentColor" />
                         <span>Start Work</span>
@@ -168,7 +168,7 @@ const ClockWidget = () => {
                             canTakeBreak && (
                                 <button
                                     onClick={handleStartBreak}
-                                    className="flex-1 md:flex-none flex items-center justify-center space-x-3 px-8 py-4 bg-[#f0e4d4] hover:bg-[#e6d0b3] text-[#373833] rounded-2xl font-black text-xs uppercase tracking-[0.2em] transition-all shadow-xl active:scale-95"
+                                    className="flex-1 md:flex-none flex items-center justify-center space-x-3 px-8 py-4 bg-[#f0e4d4] hover:bg-[#e6d0b3] text-[#191a23] rounded-2xl font-black text-xs uppercase tracking-[0.2em] transition-all shadow-xl active:scale-95"
                                 >
                                     <Coffee size={18} />
                                     <span>Take Break</span>
@@ -177,7 +177,7 @@ const ClockWidget = () => {
                         )}
                         <button
                             onClick={handleClockOut}
-                            className="flex-1 md:flex-none flex items-center justify-center space-x-3 px-8 py-4 bg-[#fa2742] hover:bg-red-700 text-white rounded-2xl font-black text-xs uppercase tracking-[0.2em] transition-all shadow-xl active:scale-95"
+                            className="flex-1 md:flex-none flex items-center justify-center space-x-3 px-8 py-4 bg-[#d4183d] hover:bg-red-700 text-white rounded-2xl font-black text-xs uppercase tracking-[0.2em] transition-all shadow-xl active:scale-95"
                         >
                             <Square size={18} fill="currentColor" />
                             <span>Clock Out</span>

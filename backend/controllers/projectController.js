@@ -1,4 +1,5 @@
 import Project from '../models/Project.js';
+import uploadToCloudinary from '../utils/fileUpload.js';
 
 // @desc    Get all projects
 // @route   GET /api/projects
@@ -84,19 +85,25 @@ const createProject = async (req, res) => {
         startDate,
         deadline,
         documentName,
-        documentURL
+        documentURL,
+        budget,
+        workspace,
+        department
     } = req.body;
 
     try {
         const project = await Project.create({
             title,
-            client, // This is the Company Name
+            client,
             status: status || 'Planning',
             progress: progress || 0,
             startDate,
             deadline,
             documentName,
             documentURL,
+            budget: budget || { currency: 'USD', estimated: 0, spent: 0 },
+            workspace,
+            department,
             manager: req.user._id,
             updates: [
                 {
@@ -169,7 +176,9 @@ const updateProject = async (req, res) => {
             priority,
             description,
             phases,
-            team
+            team,
+            budget,
+            files
         } = req.body;
 
         const project = await Project.findById(req.params.id);
@@ -354,6 +363,18 @@ const updateProject = async (req, res) => {
             project.priority = priority || project.priority;
             project.description = description || project.description;
 
+            if (budget) {
+                project.budget = {
+                    currency: budget.currency || project.budget.currency,
+                    estimated: budget.estimated !== undefined ? budget.estimated : project.budget.estimated,
+                    spent: budget.spent !== undefined ? budget.spent : project.budget.spent,
+                };
+            }
+
+            if (files) {
+                project.files = [...(project.files || []), ...files];
+            }
+
             if (phases) {
                 const oldPhases = [...project.phases];
                 project.phases = applyScoringToPhases(phases, oldPhases);
@@ -429,4 +450,65 @@ const getPendingProjects = async (req, res) => {
     }
 };
 
-export { getProjects, createProject, getProjectById, deleteProject, updateProject, getPendingProjects };
+// @desc    Upload a file to a project
+// @route   POST /api/projects/:id/upload
+// @access  Private
+const uploadProjectFile = async (req, res) => {
+    try {
+        const project = await Project.findById(req.params.id);
+        if (!project) {
+            return res.status(404).json({ message: 'Project not found' });
+        }
+
+        if (!req.file) {
+            return res.status(400).json({ message: 'No file uploaded' });
+        }
+
+        const result = await uploadToCloudinary(req.file.buffer, 'project_files');
+
+        const fileEntry = {
+            name: req.file.originalname,
+            url: result.secure_url,
+            public_id: result.public_id,
+            type: req.file.mimetype,
+            size: req.file.size,
+            uploadedBy: req.user._id,
+            uploadedAt: new Date(),
+        };
+
+        project.files.push(fileEntry);
+        await project.save();
+
+        res.status(201).json(fileEntry);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+};
+
+// @desc    Upload project document
+// @route   POST /api/projects/:id/document
+// @access  Private (Admin/PM)
+const uploadProjectDocument = async (req, res) => {
+    try {
+        const project = await Project.findById(req.params.id);
+        if (!project) {
+            return res.status(404).json({ message: 'Project not found' });
+        }
+
+        if (!req.file) {
+            return res.status(400).json({ message: 'No file uploaded' });
+        }
+
+        const result = await uploadToCloudinary(req.file.buffer, 'project_documents');
+
+        project.documentName = req.file.originalname;
+        project.documentURL = result.secure_url;
+        await project.save();
+
+        res.json({ documentName: project.documentName, documentURL: project.documentURL });
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+};
+
+export { getProjects, createProject, getProjectById, deleteProject, updateProject, getPendingProjects, uploadProjectFile, uploadProjectDocument };

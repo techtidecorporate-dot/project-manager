@@ -4,8 +4,10 @@ import {
     registerUser,
     getUserProfile,
     updateUser,
+    uploadAvatar,
 } from '../controllers/authController.js';
 import { protect, authorize } from '../middleware/authMiddleware.js';
+import upload from '../middleware/upload.js';
 import User from '../models/User.js';
 
 const router = express.Router();
@@ -13,6 +15,7 @@ const router = express.Router();
 router.post('/register', registerUser);
 router.post('/login', loginUser);
 router.get('/profile', protect, getUserProfile);
+router.put('/avatar', protect, upload.single('avatar'), uploadAvatar);
 
 // @route   GET /api/auth/users
 // @access  Private/Admin/PM
@@ -28,10 +31,16 @@ router.get('/users', protect, authorize('ADMIN', 'PM'), async (req, res) => {
     }
 });
 
-// @desc    Update user
+// @desc    Update user (Admin can update any user, PM can update own profile)
 // @route   PUT /api/auth/users/:id
-// @access  Private/Admin
-router.put('/users/:id', protect, authorize('ADMIN'), updateUser);
+// @access  Private/Admin or self
+router.put('/users/:id', protect, (req, res, next) => {
+    if (req.user.role === 'ADMIN' || req.user._id.toString() === req.params.id) {
+        next();
+    } else {
+        res.status(403).json({ message: 'Not authorized to update this user' });
+    }
+}, updateUser);
 
 // @desc    Delete user
 // @route   DELETE /api/auth/users/:id

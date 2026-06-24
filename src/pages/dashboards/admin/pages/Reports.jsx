@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+﻿import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useAuth } from '../../../../context/AuthContext';
 import {
@@ -82,15 +82,15 @@ const Reports = () => {
     const selectedUserData = selectedUser ? users.find(u => u._id === selectedUser) : null;
 
     return (
-        <div className="space-y-8 pb-10 selection:bg-[#fa2742] selection:text-[#373833]">
+        <div className="space-y-8 pb-10 selection:bg-[#453abc] selection:text-[#191a23]">
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
                 <div>
-                    <h2 className="text-3xl font-bold text-[#373833] tracking-tight">User Reports</h2>
-                    <p className="text-[#373833]/60 font-medium text-sm">Generate and analyze employee performance reports.</p>
+                    <h2 className="text-3xl font-bold text-[#191a23] tracking-tight">User Reports</h2>
+                    <p className="text-[#191a23]/60 font-medium text-sm">Generate and analyze employee performance reports.</p>
                 </div>
                 <button
                     onClick={() => setShowExportModal(true)}
-                    className="px-6 py-3 bg-[#fa2742] text-[#373833] font-black rounded-xl shadow-lg transition-all active:scale-95 flex items-center space-x-2 text-xs uppercase tracking-widest"
+                    className="px-6 py-3 bg-gradient-to-br from-[#453abc] to-[#60c3e3]  text-white font-black rounded-xl shadow-lg transition-all active:scale-95 flex items-center space-x-2 text-xs uppercase tracking-widest"
                 >
                     <Download size={18} />
                     <span>Export Report</span>
@@ -102,13 +102,13 @@ const Reports = () => {
                 {/* Total Users */}
                 <div className="bg-white p-8 rounded-[20px] shadow-2xl">
                     <div className="flex items-center justify-between mb-4">
-                        <div className="w-12 h-12 bg-[#fa2742]/20 rounded-xl flex items-center justify-center">
-                            <Users size={24} className="text-[#fa2742]" />
+                        <div className="w-12 h-12 bg-[#453abc]/20 rounded-xl flex items-center justify-center">
+                            <Users size={24} className="text-[#453abc]" />
                         </div>
                     </div>
-                    <p className="text-xs text-[#373833]/60 font-black uppercase tracking-widest mb-2">Total Users</p>
-                    <h3 className="text-3xl font-black text-[#373833]">{totalUsersCount}</h3>
-                    <p className="text-xs text-[#373833]/60 mt-2">(Developers, SQAs)</p>
+                    <p className="text-xs text-[#191a23]/60 font-black uppercase tracking-widest mb-2">Total Users</p>
+                    <h3 className="text-3xl font-black text-[#191a23]">{totalUsersCount}</h3>
+                    <p className="text-xs text-[#191a23]/60 mt-2">(Developers, SQAs)</p>
                 </div>
 
                 {/* Best Performer */}
@@ -119,9 +119,9 @@ const Reports = () => {
                         </div>
                         <span className="text-xs font-black text-green-500 bg-green-500/10 px-3 py-1 rounded-lg">Best</span>
                     </div>
-                    <p className="text-xs text-[#373833]/60 font-black uppercase tracking-widest mb-2">Top Performer</p>
-                    <h3 className="text-lg font-black text-[#373833]">{bestPerformer?.name || '---'}</h3>
-                    <p className="text-xs text-[#373833]/60 mt-2">{bestPerformer?.role || ''} {bestPerformer ? `• ${bestPerformer.totalPoints} pts` : ''}</p>
+                    <p className="text-xs text-[#191a23]/60 font-black uppercase tracking-widest mb-2">Top Performer</p>
+                    <h3 className="text-lg font-black text-[#191a23]">{bestPerformer?.name || '---'}</h3>
+                    <p className="text-xs text-[#191a23]/60 mt-2">{bestPerformer?.role || ''} {bestPerformer ? `â€¢ ${bestPerformer.totalPoints} pts` : ''}</p>
                 </div>
 
                 {/* Worst Performer */}
@@ -132,9 +132,9 @@ const Reports = () => {
                         </div>
                         <span className="text-xs font-black text-red-500 bg-red-500/10 px-3 py-1 rounded-lg">Needs Help</span>
                     </div>
-                    <p className="text-xs text-[#373833]/60 font-black uppercase tracking-widest mb-2">Least Performer</p>
-                    <h3 className="text-lg font-black text-[#373833]">{worstPerformer?.name || '---'}</h3>
-                    <p className="text-xs text-[#373833]/60 mt-2">{worstPerformer?.role || ''} {worstPerformer ? `• ${worstPerformer.totalPoints} pts` : ''}</p>
+                    <p className="text-xs text-[#191a23]/60 font-black uppercase tracking-widest mb-2">Least Performer</p>
+                    <h3 className="text-lg font-black text-[#191a23]">{worstPerformer?.name || '---'}</h3>
+                    <p className="text-xs text-[#191a23]/60 mt-2">{worstPerformer?.role || ''} {worstPerformer ? `â€¢ ${worstPerformer.totalPoints} pts` : ''}</p>
                 </div>
             </div>
 
@@ -142,19 +142,19 @@ const Reports = () => {
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 auto-rows-max">
                 {/* User Selection Panel */}
                 <div className="bg-white rounded-[20px] p-8 shadow-2xl self-start">
-                    <h3 className="text-lg font-bold text-[#373833] mb-6">Select User</h3>
+                    <h3 className="text-lg font-bold text-[#191a23] mb-6">Select User</h3>
 
                     {/* Duration Selection Filter Form */}
-                    <div className="mb-6 bg-[#373833]/5 rounded-xl p-4 border-2 border-[#373833]/10">
-                        <h4 className="text-sm font-black text-[#373833] mb-4 uppercase tracking-widest">Filter Report</h4>
+                    <div className="mb-6 bg-[#191a23]/5 rounded-xl p-4 border-2 border-[#191a23]/10">
+                        <h4 className="text-sm font-black text-[#191a23] mb-4 uppercase tracking-widest">Filter Report</h4>
 
                         <div className="space-y-3">
                             <div className="grid grid-cols-3 gap-2">
                                 <button
                                     onClick={() => setUserReportDurationType('all')}
                                     className={`px-3 py-2 rounded-lg text-xs font-bold transition-all ${userReportDurationType === 'all'
-                                        ? 'bg-[#fa2742] text-[#373833] shadow-lg'
-                                        : 'bg-white text-[#373833] border border-[#373833]/20 hover:border-[#fa2742]'
+                                        ? 'bg-[#453abc] text-white shadow-lg'
+                                        : 'bg-white text-[#191a23] border border-[#191a23]/20 hover:border-[#453abc]'
                                         }`}
                                 >
                                     All Time
@@ -162,8 +162,8 @@ const Reports = () => {
                                 <button
                                     onClick={() => setUserReportDurationType('month')}
                                     className={`px-3 py-2 rounded-lg text-xs font-bold transition-all ${userReportDurationType === 'month'
-                                        ? 'bg-[#fa2742] text-[#373833] shadow-lg'
-                                        : 'bg-white text-[#373833] border border-[#373833]/20 hover:border-[#fa2742]'
+                                        ? 'bg-[#453abc] text-[#191a23] shadow-lg'
+                                        : 'bg-white text-[#191a23] border border-[#191a23]/20 hover:border-[#453abc]'
                                         }`}
                                 >
                                     Month
@@ -171,8 +171,8 @@ const Reports = () => {
                                 <button
                                     onClick={() => setUserReportDurationType('custom')}
                                     className={`px-3 py-2 rounded-lg text-xs font-bold transition-all ${userReportDurationType === 'custom'
-                                        ? 'bg-[#fa2742] text-[#373833] shadow-lg'
-                                        : 'bg-white text-[#373833] border border-[#373833]/20 hover:border-[#fa2742]'
+                                        ? 'bg-[#453abc] text-[#191a23] shadow-lg'
+                                        : 'bg-white text-[#191a23] border border-[#191a23]/20 hover:border-[#453abc]'
                                         }`}
                                 >
                                     Custom
@@ -181,12 +181,12 @@ const Reports = () => {
 
                             {userReportDurationType === 'month' && (
                                 <div>
-                                    <label className="text-xs font-bold text-[#373833] block mb-2">Select Month</label>
+                                    <label className="text-xs font-bold text-[#191a23] block mb-2">Select Month</label>
                                     <input
                                         type="month"
                                         value={userReportMonth}
                                         onChange={(e) => setUserReportMonth(e.target.value)}
-                                        className="w-full px-3 py-2 border-2 border-[#373833]/20 rounded-lg text-sm focus:outline-none focus:border-[#fa2742] transition-colors"
+                                        className="w-full px-3 py-2 border-2 border-[#191a23]/20 rounded-lg text-sm focus:outline-none focus:border-[#453abc] transition-colors"
                                     />
                                 </div>
                             )}
@@ -194,21 +194,21 @@ const Reports = () => {
                             {userReportDurationType === 'custom' && (
                                 <div className="space-y-2">
                                     <div>
-                                        <label className="text-xs font-bold text-[#373833] block mb-1">From</label>
+                                        <label className="text-xs font-bold text-[#191a23] block mb-1">From</label>
                                         <input
                                             type="date"
                                             value={userReportStartDate}
                                             onChange={(e) => setUserReportStartDate(e.target.value)}
-                                            className="w-full px-3 py-2 border-2 border-[#373833]/20 rounded-lg text-sm focus:outline-none focus:border-[#fa2742] transition-colors"
+                                            className="w-full px-3 py-2 border-2 border-[#191a23]/20 rounded-lg text-sm focus:outline-none focus:border-[#453abc] transition-colors"
                                         />
                                     </div>
                                     <div>
-                                        <label className="text-xs font-bold text-[#373833] block mb-1">To</label>
+                                        <label className="text-xs font-bold text-[#191a23] block mb-1">To</label>
                                         <input
                                             type="date"
                                             value={userReportEndDate}
                                             onChange={(e) => setUserReportEndDate(e.target.value)}
-                                            className="w-full px-3 py-2 border-2 border-[#373833]/20 rounded-lg text-sm focus:outline-none focus:border-[#fa2742] transition-colors"
+                                            className="w-full px-3 py-2 border-2 border-[#191a23]/20 rounded-lg text-sm focus:outline-none focus:border-[#453abc] transition-colors"
                                         />
                                     </div>
                                 </div>
@@ -218,14 +218,14 @@ const Reports = () => {
 
                     {/* Position Dropdown */}
                     <div className="mb-6">
-                        <label className="block text-sm font-bold text-[#373833] mb-3">Position</label>
+                        <label className="block text-sm font-bold text-[#191a23] mb-3">Position</label>
                         <select
                             value={selectedPosition}
                             onChange={(e) => {
                                 setSelectedPosition(e.target.value);
                                 setSelectedUser(null);
                             }}
-                            className="w-full px-4 py-3 border-2 border-[#373833]/20 rounded-xl focus:outline-none focus:border-[#fa2742] transition-colors"
+                            className="w-full px-4 py-3 border-2 border-[#191a23]/20 rounded-xl focus:outline-none focus:border-[#453abc] transition-colors"
                         >
                             <option value="">Select Position</option>
                             {positions.map((position) => (
@@ -239,21 +239,21 @@ const Reports = () => {
                     {/* Selected Users List Display */}
                     {selectedPosition && (
                         <div>
-                            <h4 className="text-sm font-bold text-[#373833] mb-4">Select User</h4>
+                            <h4 className="text-sm font-bold text-[#191a23] mb-4">Select User</h4>
                             <div className="max-h-96 overflow-y-auto">
                                 <div className="space-y-3">
                                     {filteredUsers.map((user) => (
                                         <button
                                             key={user._id}
                                             onClick={() => setSelectedUser(user._id)}
-                                            className={`w-full flex items-center space-x-3 p-4 rounded-lg transition-all text-left ${selectedUser === user._id ? 'bg-[#fa2742]/10 border border-[#fa2742]/30' : 'bg-[#373833]/5 hover:bg-[#373833]/10'} text-[#373833]`}
+                                            className={`w-full flex items-center space-x-3 p-4 rounded-lg transition-all text-left ${selectedUser === user._id ? 'bg-[#453abc]/10 border border-[#453abc]/30' : 'bg-[#191a23]/5 hover:bg-[#191a23]/10'} text-[#191a23]`}
                                         >
-                                            <div className="w-10 h-10 rounded-lg bg-[#373833]/10 flex items-center justify-center overflow-hidden">
+                                            <div className="w-10 h-10 rounded-lg bg-[#191a23]/10 flex items-center justify-center overflow-hidden">
                                                 {user.avatar ? <img src={user.avatar} alt={user.name} className="w-full h-full object-cover" /> : <Users size={20} />}
                                             </div>
                                             <div className="flex-1 min-w-0">
                                                 <p className="font-bold text-sm truncate">{user.name}</p>
-                                                <p className={`text-[10px] font-black uppercase tracking-widest ${selectedUser === user._id ? 'text-[#fa2742]' : 'opacity-60'}`}>{user.role}</p>
+                                                <p className={`text-[10px] font-black uppercase tracking-widest ${selectedUser === user._id ? 'text-[#453abc]' : 'opacity-60'}`}>{user.role}</p>
                                             </div>
                                             <span className={`text-xs font-black px-2 py-1 rounded ${user.totalPoints >= 20 ? 'bg-green-500/20 text-green-600' :
                                                 user.totalPoints >= 0 ? 'bg-yellow-500/20 text-yellow-600' :
@@ -275,12 +275,12 @@ const Reports = () => {
                         <div className="bg-white rounded-[20px] p-8 shadow-2xl">
                             <div className="flex items-start justify-between mb-8">
                                 <div className="flex items-center space-x-4">
-                                    <div className="w-16 h-16 rounded-lg bg-[#373833]/10 flex items-center justify-center overflow-hidden">
+                                    <div className="w-16 h-16 rounded-lg bg-[#191a23]/10 flex items-center justify-center overflow-hidden">
                                         {selectedUserData.avatar ? <img src={selectedUserData.avatar} alt={selectedUserData.name} className="w-full h-full object-cover" /> : <Users size={32} />}
                                     </div>
                                     <div>
-                                        <h3 className="text-2xl font-bold text-[#373833]">{selectedUserData.name}</h3>
-                                        <p className="text-sm text-[#373833]/60">{selectedUserData.role} • {selectedUserData.email}</p>
+                                        <h3 className="text-2xl font-bold text-[#191a23]">{selectedUserData.name}</h3>
+                                        <p className="text-sm text-[#191a23]/60">{selectedUserData.role} â€¢ {selectedUserData.email}</p>
                                         <div className="mt-2 flex gap-2">
                                             <span className={`inline-block px-3 py-1 rounded-lg text-sm font-black ${selectedUserData.totalPoints >= 20 ? 'bg-green-500/20 text-green-600' :
                                                 selectedUserData.totalPoints >= 0 ? 'bg-yellow-500/20 text-yellow-600' :
@@ -295,33 +295,33 @@ const Reports = () => {
 
                             {/* Performance Stats Grid */}
                             <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-8">
-                                <div className="p-4 bg-[#373833]/5 rounded-xl border border-[#373833]/10">
-                                    <p className="text-[10px] font-black text-[#373833]/40 uppercase tracking-widest mb-1">Tasks Done</p>
-                                    <h5 className="text-xl font-black text-[#373833]">{selectedUserData.stats.tasksCompleted}</h5>
+                                <div className="p-4 bg-[#191a23]/5 rounded-xl border border-[#191a23]/10">
+                                    <p className="text-[10px] font-black text-[#191a23]/40 uppercase tracking-widest mb-1">Tasks Done</p>
+                                    <h5 className="text-xl font-black text-[#191a23]">{selectedUserData.stats.tasksCompleted}</h5>
                                 </div>
-                                <div className="p-4 bg-[#373833]/5 rounded-xl border border-[#373833]/10">
-                                    <p className="text-[10px] font-black text-[#373833]/40 uppercase tracking-widest mb-1">On Time</p>
+                                <div className="p-4 bg-[#191a23]/5 rounded-xl border border-[#191a23]/10">
+                                    <p className="text-[10px] font-black text-[#191a23]/40 uppercase tracking-widest mb-1">On Time</p>
                                     <h5 className="text-xl font-black text-green-600">{selectedUserData.stats.tasksOnTime}</h5>
                                 </div>
-                                <div className="p-4 bg-[#373833]/5 rounded-xl border border-[#373833]/10">
-                                    <p className="text-[10px] font-black text-[#373833]/40 uppercase tracking-widest mb-1">Attendance</p>
-                                    <h5 className="text-xl font-black text-[#373833]">{selectedUserData.stats.totalAttendanceDays}d</h5>
+                                <div className="p-4 bg-[#191a23]/5 rounded-xl border border-[#191a23]/10">
+                                    <p className="text-[10px] font-black text-[#191a23]/40 uppercase tracking-widest mb-1">Attendance</p>
+                                    <h5 className="text-xl font-black text-[#191a23]">{selectedUserData.stats.totalAttendanceDays}d</h5>
                                 </div>
-                                <div className="p-4 bg-[#373833]/5 rounded-xl border border-[#373833]/10">
-                                    <p className="text-[10px] font-black text-[#373833]/40 uppercase tracking-widest mb-1">Bugs Found</p>
+                                <div className="p-4 bg-[#191a23]/5 rounded-xl border border-[#191a23]/10">
+                                    <p className="text-[10px] font-black text-[#191a23]/40 uppercase tracking-widest mb-1">Bugs Found</p>
                                     <h5 className="text-xl font-black text-orange-600">{selectedUserData.stats.bugsFound}</h5>
                                 </div>
                             </div>
 
-                            <div className="text-center py-6 border-2 border-dashed border-[#373833]/10 rounded-2xl">
-                                <Activity size={32} className="mx-auto text-[#373833]/20 mb-2" />
-                                <p className="text-sm text-[#373833]/60 font-medium italic">Detailed activity log integration coming soon...</p>
+                            <div className="text-center py-6 border-2 border-dashed border-[#191a23]/10 rounded-2xl">
+                                <Activity size={32} className="mx-auto text-[#191a23]/20 mb-2" />
+                                <p className="text-sm text-[#191a23]/60 font-medium italic">Detailed activity log integration coming soon...</p>
                             </div>
                         </div>
                     ) : (
                         <div className="bg-white rounded-[20px] p-12 shadow-2xl text-center">
-                            <AlertCircle size={48} className="mx-auto text-[#373833]/30 mb-4" />
-                            <p className="text-[#373833]/60 font-medium">Select a user to view their detailed report</p>
+                            <AlertCircle size={48} className="mx-auto text-[#191a23]/30 mb-4" />
+                            <p className="text-[#191a23]/60 font-medium">Select a user to view their detailed report</p>
                         </div>
                     )}
                 </div>
@@ -330,25 +330,25 @@ const Reports = () => {
             {/* Export Modal */}
             {showExportModal && (
                 <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
-                    <div className="bg-white rounded-[20px] p-8 shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+                    <div className="bg-white rounded-[20px] p-4 md:p-6 lg:p-8 shadow-2xl max-w-[95vw] md:max-w-2xl w-full max-h-[90vh] overflow-y-auto">
                         <div className="flex items-center justify-between mb-6">
-                            <h3 className="text-2xl font-bold text-[#373833]">Export All Reports</h3>
+                            <h3 className="text-2xl font-bold text-[#191a23]">Export All Reports</h3>
                             <button
                                 onClick={() => setShowExportModal(false)}
-                                className="text-[#373833]/60 hover:text-[#373833] transition-colors p-2"
+                                className="text-[#191a23]/60 hover:text-[#191a23] transition-colors p-2"
                             >
-                                ✕
+                                âœ•
                             </button>
                         </div>
 
                         {/* Duration Selection */}
-                        <div className="mb-8 p-6 bg-[#373833]/5 rounded-lg">
-                            <h4 className="text-lg font-bold text-[#373833] mb-4">Select Report Duration</h4>
+                        <div className="mb-8 p-6 bg-[#191a23]/5 rounded-lg">
+                            <h4 className="text-lg font-bold text-[#191a23] mb-4">Select Report Duration</h4>
 
                             <div className="space-y-4">
                                 {/* All Reports Option */}
-                                <label className="flex items-center space-x-3 p-4 border-2 border-[#373833]/20 rounded-lg cursor-pointer hover:bg-[#373833]/5 transition-all"
-                                    style={{ borderColor: exportDurationType === 'all' ? '#fa2742' : undefined, backgroundColor: exportDurationType === 'all' ? '#fa2742/10' : '' }}>
+                                <label className="flex items-center space-x-3 p-4 border-2 border-[#191a23]/20 rounded-lg cursor-pointer hover:bg-[#191a23]/5 transition-all"
+                                    style={{ borderColor: exportDurationType === 'all' ? '#453abc' : undefined, backgroundColor: exportDurationType === 'all' ? '#453abc/10' : '' }}>
                                     <input
                                         type="radio"
                                         name="duration"
@@ -358,14 +358,14 @@ const Reports = () => {
                                         className="w-4 h-4"
                                     />
                                     <div>
-                                        <p className="font-bold text-[#373833]">All Reports</p>
-                                        <p className="text-xs text-[#373833]/60">Show complete report history</p>
+                                        <p className="font-bold text-[#191a23]">All Reports</p>
+                                        <p className="text-xs text-[#191a23]/60">Show complete report history</p>
                                     </div>
                                 </label>
 
                                 {/* By Month Option */}
-                                <label className="flex items-center space-x-3 p-4 border-2 border-[#373833]/20 rounded-lg cursor-pointer hover:bg-[#373833]/5 transition-all"
-                                    style={{ borderColor: exportDurationType === 'month' ? '#fa2742' : undefined, backgroundColor: exportDurationType === 'month' ? '#fa2742/10' : '' }}>
+                                <label className="flex items-center space-x-3 p-4 border-2 border-[#191a23]/20 rounded-lg cursor-pointer hover:bg-[#191a23]/5 transition-all"
+                                    style={{ borderColor: exportDurationType === 'month' ? '#453abc' : undefined, backgroundColor: exportDurationType === 'month' ? '#453abc/10' : '' }}>
                                     <input
                                         type="radio"
                                         name="duration"
@@ -375,22 +375,22 @@ const Reports = () => {
                                         className="w-4 h-4"
                                     />
                                     <div className="flex-1">
-                                        <p className="font-bold text-[#373833]">By Month</p>
-                                        <p className="text-xs text-[#373833]/60 mb-2">Select a specific month</p>
+                                        <p className="font-bold text-[#191a23]">By Month</p>
+                                        <p className="text-xs text-[#191a23]/60 mb-2">Select a specific month</p>
                                         {exportDurationType === 'month' && (
                                             <input
                                                 type="month"
                                                 value={exportMonth}
                                                 onChange={(e) => setExportMonth(e.target.value)}
-                                                className="px-3 py-2 border-2 border-[#373833]/20 rounded-lg text-sm focus:outline-none focus:border-[#fa2742]"
+                                                className="px-3 py-2 border-2 border-[#191a23]/20 rounded-lg text-sm focus:outline-none focus:border-[#453abc]"
                                             />
                                         )}
                                     </div>
                                 </label>
 
                                 {/* Custom Duration Option */}
-                                <label className="flex items-start space-x-3 p-4 border-2 border-[#373833]/20 rounded-lg cursor-pointer hover:bg-[#373833]/5 transition-all"
-                                    style={{ borderColor: exportDurationType === 'custom' ? '#fa2742' : undefined, backgroundColor: exportDurationType === 'custom' ? '#fa2742/10' : '' }}>
+                                <label className="flex items-start space-x-3 p-4 border-2 border-[#191a23]/20 rounded-lg cursor-pointer hover:bg-[#191a23]/5 transition-all"
+                                    style={{ borderColor: exportDurationType === 'custom' ? '#453abc' : undefined, backgroundColor: exportDurationType === 'custom' ? '#453abc/10' : '' }}>
                                     <input
                                         type="radio"
                                         name="duration"
@@ -400,26 +400,26 @@ const Reports = () => {
                                         className="w-4 h-4 mt-1"
                                     />
                                     <div className="flex-1">
-                                        <p className="font-bold text-[#373833]">Custom Duration</p>
-                                        <p className="text-xs text-[#373833]/60 mb-3">Select from and to dates</p>
+                                        <p className="font-bold text-[#191a23]">Custom Duration</p>
+                                        <p className="text-xs text-[#191a23]/60 mb-3">Select from and to dates</p>
                                         {exportDurationType === 'custom' && (
                                             <div className="space-y-3">
                                                 <div>
-                                                    <label className="text-xs font-bold text-[#373833] block mb-1">From Date</label>
+                                                    <label className="text-xs font-bold text-[#191a23] block mb-1">From Date</label>
                                                     <input
                                                         type="date"
                                                         value={exportStartDate}
                                                         onChange={(e) => setExportStartDate(e.target.value)}
-                                                        className="w-full px-3 py-2 border-2 border-[#373833]/20 rounded-lg text-sm focus:outline-none focus:border-[#fa2742]"
+                                                        className="w-full px-3 py-2 border-2 border-[#191a23]/20 rounded-lg text-sm focus:outline-none focus:border-[#453abc]"
                                                     />
                                                 </div>
                                                 <div>
-                                                    <label className="text-xs font-bold text-[#373833] block mb-1">To Date</label>
+                                                    <label className="text-xs font-bold text-[#191a23] block mb-1">To Date</label>
                                                     <input
                                                         type="date"
                                                         value={exportEndDate}
                                                         onChange={(e) => setExportEndDate(e.target.value)}
-                                                        className="w-full px-3 py-2 border-2 border-[#373833]/20 rounded-lg text-sm focus:outline-none focus:border-[#fa2742]"
+                                                        className="w-full px-3 py-2 border-2 border-[#191a23]/20 rounded-lg text-sm focus:outline-none focus:border-[#453abc]"
                                                     />
                                                 </div>
                                             </div>
@@ -430,9 +430,9 @@ const Reports = () => {
                         </div>
 
                         {/* Selected Duration Summary */}
-                        <div className="mb-8 p-4 bg-[#fa2742]/10 border border-[#fa2742]/30 rounded-lg">
-                            <p className="text-sm font-bold text-[#373833]">Selected Duration:</p>
-                            <p className="text-sm text-[#373833]/70 mt-1">
+                        <div className="mb-8 p-4 bg-[#453abc]/10 border border-[#453abc]/30 rounded-lg">
+                            <p className="text-sm font-bold text-[#191a23]">Selected Duration:</p>
+                            <p className="text-sm text-[#191a23]/70 mt-1">
                                 {exportDurationType === 'all' && 'Complete Report History (All Time)'}
                                 {exportDurationType === 'month' && `Month of ${exportMonth}`}
                                 {exportDurationType === 'custom' && `${exportStartDate} to ${exportEndDate}`}
@@ -441,28 +441,28 @@ const Reports = () => {
 
                         {/* Export Options */}
                         <div className="mb-6">
-                            <h4 className="text-sm font-bold text-[#373833] mb-3">Export Format</h4>
-                            <div className="grid grid-cols-2 gap-3">
-                                <button className="px-4 py-3 bg-[#373833]/10 hover:bg-[#373833]/20 rounded-lg font-bold text-sm transition-all">
-                                    📊 Export as PDF
+                            <h4 className="text-sm font-bold text-[#191a23] mb-3">Export Format</h4>
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                                <button className="px-4 py-3 bg-[#191a23]/10 hover:bg-[#191a23]/20 rounded-lg font-bold text-sm transition-all">
+                                    ðŸ“Š Export as PDF
                                 </button>
-                                <button className="px-4 py-3 bg-[#373833]/10 hover:bg-[#373833]/20 rounded-lg font-bold text-sm transition-all">
-                                    📋 Export as CSV
+                                <button className="px-4 py-3 bg-[#191a23]/10 hover:bg-[#191a23]/20 rounded-lg font-bold text-sm transition-all">
+                                    ðŸ“‹ Export as CSV
                                 </button>
                             </div>
                         </div>
 
                         {/* Action Buttons */}
-                        <div className="flex gap-4">
+                        <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
                             <button
                                 onClick={() => setShowExportModal(false)}
-                                className="flex-1 px-6 py-3 bg-[#fa2742] text-[#373833] rounded-xl font-black text-sm uppercase tracking-widest hover:opacity-90 transition-all"
+                                className="w-full sm:flex-1 px-6 py-3 bg-[#453abc] text-[#191a23] rounded-xl font-black text-sm uppercase tracking-widest hover:opacity-90 transition-all"
                             >
                                 Export Report
                             </button>
                             <button
                                 onClick={() => setShowExportModal(false)}
-                                className="flex-1 px-6 py-3 bg-[#373833]/10 text-[#373833] rounded-xl font-black text-sm uppercase tracking-widest hover:bg-[#373833]/20 transition-all"
+                                className="w-full sm:flex-1 px-6 py-3 bg-[#191a23]/10 text-[#191a23] rounded-xl font-black text-sm uppercase tracking-widest hover:bg-[#191a23]/20 transition-all"
                             >
                                 Cancel
                             </button>
@@ -475,5 +475,6 @@ const Reports = () => {
 };
 
 export default Reports;
+
 
 

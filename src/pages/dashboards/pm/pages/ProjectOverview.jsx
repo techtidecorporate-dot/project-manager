@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+﻿import React, { useState, useEffect } from 'react';
 import {
     Briefcase,
     ChevronDown,
@@ -9,6 +9,7 @@ import {
     FileText,
     Download
 } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import clsx from 'clsx';
 import { useAuth } from '../../../../context/AuthContext';
 
@@ -72,8 +73,8 @@ const ProjectOverview = () => {
         <div className="space-y-8">
             <div className="flex items-center justify-between">
                 <div>
-                    <h2 className="text-3xl font-black text-[#373833] tracking-tight">Mission Intelligence</h2>
-                    <p className="text-[#373833]/60 font-bold text-sm italic uppercase tracking-widest">Real-time status of all enterprise deployments.</p>
+                    <h2 className="text-3xl font-black text-[#191a23] tracking-tight">Mission Intelligence</h2>
+                    <p className="text-[#191a23]/60 font-bold text-sm italic uppercase tracking-widest">Real-time status of all enterprise deployments.</p>
                 </div>
             </div>
 
@@ -81,42 +82,51 @@ const ProjectOverview = () => {
                 {projects.map((project) => (
                     <div
                         key={project._id}
-                        className="bg-white rounded-[20px] p-6 shadow-md hover:shadow-xl transition-all border border-[#373833]/5 cursor-pointer"
-                        onClick={() => setExpandedProject(expandedProject === project._id ? null : project._id)}
+                        className="bg-white rounded-[20px] p-6 shadow-md hover:shadow-xl transition-all border border-[#191a23]/5 cursor-pointer"
+                        onClick={() => setExpandedProject(prev => prev === project._id ? null : project._id)}
                     >
                         {/* Project Header - Always Visible */}
                         <div className="flex items-center justify-between">
                             <div className="flex items-center space-x-4">
-                                <div className="w-14 h-14 rounded-2xl bg-[#373833]/5 flex items-center justify-center shadow-lg">
-                                    <Briefcase size={24} className="text-[#373833]" />
+                                <div className="w-14 h-14 rounded-2xl bg-[#191a23]/5 flex items-center justify-center shadow-lg">
+                                    <Briefcase size={24} className="text-[#191a23]" />
                                 </div>
                                 <div>
-                                    <h3 className="text-xl font-black text-[#373833] hover:text-[#fa2742] transition-colors">{project.title}</h3>
-                                    <p className="text-sm text-[#373833]/60 font-medium">{project.client}</p>
+                                    <h3 className="text-xl font-black text-[#191a23] hover:text-[#453abc] transition-colors">{project.title}</h3>
+                                    <p className="text-sm text-[#191a23]/60 font-medium">{project.client}</p>
                                 </div>
                             </div>
-                            <div className={`p-2 rounded-lg transition-colors ${expandedProject === project._id ? 'bg-[#373833]/5' : ''}`}>
-                                {expandedProject === project._id ? <ChevronUp className="text-[#fa2742]" size={20} /> : <ChevronDown className="text-[#373833]/40" size={20} />}
+                            <div className={`p-2 rounded-lg transition-colors ${expandedProject === project._id ? 'bg-[#191a23]/5' : ''}`}>
+                                {expandedProject === project._id ? <ChevronUp className="text-[#453abc]" size={20} /> : <ChevronDown className="text-[#191a23]/40" size={20} />}
                             </div>
                         </div>
 
                         {/* Expanded Details */}
                         {expandedProject === project._id && (
-                            <div className="mt-6 pt-6 border-t border-[#373833]/10 space-y-6 animate-in fade-in slide-in-from-top-4 duration-300">
+                            <div className="mt-6 pt-6 border-t border-[#191a23]/10 space-y-6 animate-in fade-in slide-in-from-top-4 duration-300">
+                                <div className="flex justify-end">
+                                    <Link
+                                        to={`/pm/projects/${project._id}`}
+                                        onClick={(e) => e.stopPropagation()}
+                                        className="text-[10px] font-black uppercase tracking-widest text-[#453abc] hover:underline flex items-center gap-1"
+                                    >
+                                        View Full Details →
+                                    </Link>
+                                </div>
                                 {/* Completion Progress Section */}
-                                <div className="p-6 bg-gradient-to-br from-gray-50 to-gray-100/50 rounded-2xl border border-[#373833]/5">
+                                <div className="p-6 bg-gradient-to-br from-gray-50 to-gray-100/50 rounded-2xl border border-[#191a23]/5">
                                     <div className="space-y-3">
                                         <div className="flex justify-between items-center">
-                                            <span className="text-sm font-black text-[#373833]/50 uppercase tracking-wider">Project Completion</span>
-                                            <span className="text-4xl font-black text-[#fa2742]">{project.progress || 0}%</span>
+                                            <span className="text-sm font-black text-[#191a23]/50 uppercase tracking-wider">Project Completion</span>
+                                            <span className="text-4xl font-black text-[#453abc]">{project.progress || 0}%</span>
                                         </div>
-                                        <div className="w-full bg-white h-5 rounded-full overflow-hidden border-2 border-[#373833]/10 shadow-inner">
+                                        <div className="w-full bg-white h-5 rounded-full overflow-hidden border-2 border-[#191a23]/10 shadow-inner">
                                             <div
-                                                className="h-full bg-gradient-to-r from-[#fa2742] to-[#ff4757] transition-all duration-1000 ease-out shadow-[0_0_15px_rgba(250,39,66,0.4)]"
+                                                className="h-full bg-gradient-to-r from-[#453abc] to-[#ff4757] transition-all duration-1000 ease-out shadow-[0_0_15px_rgba(69,58,188,0.4)]"
                                                 style={{ width: `${project.progress || 0}%` }}
                                             ></div>
                                         </div>
-                                        <p className="text-xs text-[#373833]/40 text-center font-medium">
+                                        <p className="text-xs text-[#191a23]/40 text-center font-medium">
                                             {project.phases?.filter(p => p.status === 'Completed').length || 0} of {project.phases?.length || 0} phases completed
                                         </p>
                                     </div>
@@ -125,19 +135,19 @@ const ProjectOverview = () => {
                                 {/* Project Briefing Section */}
                                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                                     <div className="md:col-span-2 space-y-2">
-                                        <h4 className="text-xs font-black text-[#373833] uppercase tracking-widest flex items-center space-x-2">
+                                        <h4 className="text-xs font-black text-[#191a23] uppercase tracking-widest flex items-center space-x-2">
                                             <FileText size={16} />
                                             <span>Mission Briefing</span>
                                         </h4>
-                                        <div className="p-4 bg-gray-50 rounded-2xl border border-[#373833]/5">
-                                            <p className="text-sm text-[#373833]/70 leading-relaxed italic">
+                                        <div className="p-4 bg-gray-50 rounded-2xl border border-[#191a23]/5">
+                                            <p className="text-sm text-[#191a23]/70 leading-relaxed italic">
                                                 {project.description || "Intelligence briefing pending for this deployment."}
                                             </p>
                                         </div>
                                     </div>
 
                                     <div className="space-y-2">
-                                        <h4 className="text-xs font-black text-[#373833] uppercase tracking-widest flex items-center space-x-2">
+                                        <h4 className="text-xs font-black text-[#191a23] uppercase tracking-widest flex items-center space-x-2">
                                             <Download size={16} />
                                             <span>Operational Assets</span>
                                         </h4>
@@ -147,24 +157,24 @@ const ProjectOverview = () => {
                                                 target="_blank"
                                                 rel="noopener noreferrer"
                                                 onClick={(e) => e.stopPropagation()}
-                                                className="flex items-center justify-between p-4 bg-white border-2 border-dashed border-[#fa2742]/20 rounded-2xl hover:border-[#fa2742] transition-all group/doc"
+                                                className="flex items-center justify-between p-4 bg-white border-2 border-dashed border-[#453abc]/20 rounded-2xl hover:border-[#453abc] transition-all group/doc"
                                             >
                                                 <div className="flex items-center space-x-3">
-                                                    <div className="w-8 h-8 bg-[#fa2742]/10 rounded-lg flex items-center justify-center text-[#fa2742]">
+                                                    <div className="w-8 h-8 bg-[#453abc]/10 rounded-lg flex items-center justify-center text-[#453abc]">
                                                         <FileText size={18} />
                                                     </div>
                                                     <div className="max-w-[120px]">
-                                                        <p className="text-[10px] font-black text-[#373833] uppercase truncate">
+                                                        <p className="text-[10px] font-black text-[#191a23] uppercase truncate">
                                                             {project.documentName || "Primary Doc"}
                                                         </p>
-                                                        <p className="text-[8px] text-[#373833]/40 font-bold uppercase">Asset Verified</p>
+                                                        <p className="text-[8px] text-[#191a23]/40 font-bold uppercase">Asset Verified</p>
                                                     </div>
                                                 </div>
-                                                <Download size={16} className="text-[#373833]/20 group-hover/doc:text-[#fa2742] transition-colors" />
+                                                <Download size={16} className="text-[#191a23]/20 group-hover/doc:text-[#453abc] transition-colors" />
                                             </a>
                                         ) : (
                                             <div className="p-4 bg-gray-50 rounded-2xl border border-dashed border-gray-200 flex flex-col items-center justify-center text-center opacity-50">
-                                                <p className="text-[9px] font-black text-[#373833]/40 uppercase">No Assets Linked</p>
+                                                <p className="text-[9px] font-black text-[#191a23]/40 uppercase">No Assets Linked</p>
                                             </div>
                                         )}
                                     </div>
@@ -173,27 +183,27 @@ const ProjectOverview = () => {
                                 {/* Phases and Team in Grid */}
                                 <div className="grid md:grid-cols-2 gap-8">
                                     <div>
-                                        <h4 className="text-xs font-black text-[#373833] uppercase tracking-widest mb-4 flex items-center space-x-2">
+                                        <h4 className="text-xs font-black text-[#191a23] uppercase tracking-widest mb-4 flex items-center space-x-2">
                                             <Clock size={16} />
                                             <span>Project Phases</span>
                                         </h4>
                                         <div className="space-y-3">
                                             {project.phases && project.phases.length > 0 ? project.phases.map((phase, i) => (
-                                                <div key={i} className="p-4 bg-[#f5f5f5] rounded-xl hover:bg-gray-100 transition-colors border border-transparent hover:border-[#fa2742]/20">
+                                                <div key={i} className="p-4 bg-[#f5f5f5] rounded-xl hover:bg-gray-100 transition-colors border border-transparent hover:border-[#453abc]/20">
                                                     <div className="flex justify-between items-start mb-3">
                                                         <div className="flex-1">
-                                                            <span className="font-black text-[#373833] text-sm block mb-1">{phase.name}</span>
-                                                            <span className="text-[10px] text-[#373833]/50 font-bold uppercase tracking-wider">
+                                                            <span className="font-black text-[#191a23] text-sm block mb-1">{phase.name}</span>
+                                                            <span className="text-[10px] text-[#191a23]/50 font-bold uppercase tracking-wider">
                                                                 Dev: {typeof phase.developer === 'object' ? phase.developer.name : 'Unassigned'}
                                                             </span>
                                                             <div className="flex items-center gap-2 mt-1">
                                                                 <span className={clsx(
                                                                     "text-[8px] px-1.5 py-0.5 font-black rounded uppercase",
-                                                                    phase.priority === 'High' ? 'bg-[#fa2742]/10 text-[#fa2742]' :
+                                                                    phase.priority === 'High' ? 'bg-[#453abc]/10 text-[#453abc]' :
                                                                         phase.priority === 'Medium' ? 'bg-blue-50 text-blue-600' :
                                                                             'bg-gray-100 text-gray-400'
                                                                 )}>{phase.priority || 'Medium'}</span>
-                                                                <span className="text-[8px] text-[#373833]/40 font-bold uppercase">{phase.duration || 0}d (D:{phase.devDays || 0} S:{phase.sqaDays || 0})</span>
+                                                                <span className="text-[8px] text-[#191a23]/40 font-bold uppercase">{phase.duration || 0}d (D:{phase.devDays || 0} S:{phase.sqaDays || 0})</span>
                                                             </div>
                                                         </div>
                                                         <span className={`px-2 py-0.5 rounded-lg text-[9px] font-black uppercase tracking-widest
@@ -230,23 +240,23 @@ const ProjectOverview = () => {
                                                         )}
                                                     </div>
                                                 </div>
-                                            )) : <p className="text-xs text-[#373833]/40 italic">No phases defined.</p>}
+                                            )) : <p className="text-xs text-[#191a23]/40 italic">No phases defined.</p>}
                                         </div>
                                     </div>
                                     <div>
-                                        <h4 className="text-xs font-black text-[#373833] uppercase tracking-widest mb-4 flex items-center space-x-2">
+                                        <h4 className="text-xs font-black text-[#191a23] uppercase tracking-widest mb-4 flex items-center space-x-2">
                                             <User size={16} />
                                             <span>Team Members</span>
                                         </h4>
                                         <div className="flex flex-wrap gap-2">
                                             {project.team && project.team.length > 0 ? project.team.map((member, i) => (
-                                                <div key={i} className="flex items-center space-x-2 bg-[#373833] text-white pl-1 pr-3 py-1 rounded-full">
-                                                    <div className="w-6 h-6 bg-[#fa2742] rounded-full flex items-center justify-center text-[10px] font-bold">
+                                                <div key={i} className="flex items-center space-x-2 bg-[#191a23] text-white pl-1 pr-3 py-1 rounded-full">
+                                                    <div className="w-6 h-6 bg-[#453abc] rounded-full flex items-center justify-center text-[10px] font-bold">
                                                         {member.name ? member.name.charAt(0) : '?'}
                                                     </div>
                                                     <span className="text-xs font-bold">{member.name || 'Unknown'}</span>
                                                 </div>
-                                            )) : <p className="text-xs text-[#373833]/40 italic">No team assigned.</p>}
+                                            )) : <p className="text-xs text-[#191a23]/40 italic">No team assigned.</p>}
                                         </div>
                                     </div>
                                 </div>
@@ -260,3 +270,4 @@ const ProjectOverview = () => {
 };
 
 export default ProjectOverview;
+

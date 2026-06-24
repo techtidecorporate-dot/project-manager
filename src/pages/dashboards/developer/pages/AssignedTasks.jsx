@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+﻿import React, { useState, useEffect } from 'react';
 import {
     PlayCircle,
     CheckCircle,
@@ -6,7 +6,8 @@ import {
     Layout,
     User,
     CheckCircle2,
-    Calendar
+    Calendar,
+    ExternalLink
 } from 'lucide-react';
 import { useAuth } from '../../../../context/AuthContext';
 import clsx from 'clsx';
@@ -16,6 +17,8 @@ const AssignedTasks = () => {
     const [tasks, setTasks] = useState([]);
     const [projects, setProjects] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [completingPhase, setCompletingPhase] = useState(null);
+    const [deliverableUrl, setDeliverableUrl] = useState('');
 
     useEffect(() => {
         if (currentUser) {
@@ -98,9 +101,19 @@ const AssignedTasks = () => {
         return tasks.filter(task => task.status !== 'Completed');
     };
 
+    const getStatusColor = (status) => {
+        switch (status) {
+            case 'Todo': return 'bg-gray-100 text-gray-600';
+            case 'In Progress': return 'bg-blue-100 text-blue-600';
+            case 'In Review': return 'bg-amber-100 text-amber-600';
+            case 'Completed': return 'bg-green-100 text-green-600';
+            default: return 'bg-gray-100 text-gray-600';
+        }
+    };
+
     // Handle phase status update
     // When developer completes, it goes to SQA for review (status: 'Review')
-    const handleUpdatePhaseStatus = async (projectId, phaseName, newStatus) => {
+    const handleUpdatePhaseStatus = async (projectId, phaseName, newStatus, url = '') => {
         try {
             const project = projects.find(p => p._id === projectId);
             if (!project) return;
@@ -109,7 +122,7 @@ const AssignedTasks = () => {
                 if (phase.name === phaseName) {
                     // When developer completes, send to SQA review
                     const status = newStatus === 'Completed' ? 'Review' : newStatus;
-                    return { ...phase, status };
+                    return { ...phase, status, deliverableUrl: url || phase.deliverableUrl };
                 }
                 return phase;
             });
@@ -194,7 +207,7 @@ const AssignedTasks = () => {
 
     const getPriorityColor = (priority) => {
         switch (priority) {
-            case 'High': return 'text-[#fa2742] bg-[#fa2742]/10';
+            case 'High': return 'text-[#453abc] bg-[#453abc]/10';
             case 'Medium': return 'text-blue-500 bg-blue-50';
             case 'Low': return 'text-gray-400 bg-gray-100';
             default: return 'text-gray-500 bg-gray-100';
@@ -233,9 +246,9 @@ const AssignedTasks = () => {
                 <div className="flex items-center space-x-3 mb-2">
                     <div className={clsx(
                         "w-2 h-6 rounded-full",
-                        title === 'High' ? "bg-[#fa2742]" : title === 'Medium' ? "bg-blue-500" : "bg-gray-400"
+                        title === 'High' ? "bg-[#453abc]" : title === 'Medium' ? "bg-blue-500" : "bg-gray-400"
                     )} />
-                    <h3 className="text-sm font-black uppercase tracking-widest text-[#373833]/60 italic">
+                    <h3 className="text-sm font-black uppercase tracking-widest text-[#191a23]/60 italic">
                         {title} Priority {type === 'Phase' ? 'Phases' : 'Tasks'}
                     </h3>
                 </div>
@@ -245,12 +258,12 @@ const AssignedTasks = () => {
                             <div className="flex justify-between items-start mb-3">
                                 <div className="flex-1">
                                     <div className="flex items-center space-x-2 mb-1">
-                                        <Layout size={16} className="text-[#373833]/40" />
-                                        <span className="text-sm font-bold text-[#373833]/60">
+                                        <Layout size={16} className="text-[#191a23]/40" />
+                                        <span className="text-sm font-bold text-[#191a23]/60">
                                             {phase.project?.title || 'Unknown Project'}
                                         </span>
                                     </div>
-                                    <h3 className="text-lg font-bold text-[#373833]">{phase.name}</h3>
+                                    <h3 className="text-lg font-bold text-[#191a23]">{phase.name}</h3>
                                     {phase.description && (
                                         <p className="text-gray-600 mt-2">{phase.description}</p>
                                     )}
@@ -292,7 +305,7 @@ const AssignedTasks = () => {
                                     {phase.status === 'Pending' && (
                                         <button
                                             onClick={() => handleUpdatePhaseStatus(phase.project._id, phase.name, 'Working')}
-                                            className="flex items-center space-x-2 px-6 py-2.5 bg-[#373833] text-white rounded-xl hover:bg-[#fa2742] transition-all active:scale-95 shadow-lg"
+                                            className="flex items-center space-x-2 px-6 py-2.5 bg-[#191a23] text-white rounded-xl hover:bg-[#453abc] transition-all active:scale-95 shadow-lg"
                                         >
                                             <PlayCircle size={18} />
                                             <span className="font-bold text-xs uppercase tracking-widest">Start</span>
@@ -308,18 +321,63 @@ const AssignedTasks = () => {
                                         </button>
                                     )}
                                     {phase.status === 'Working' && (
-                                        <button
-                                            onClick={() => handleUpdatePhaseStatus(phase.project._id, phase.name, 'Completed (Dev)')}
-                                            className="flex items-center space-x-2 px-6 py-2.5 bg-[#fa2742] text-white rounded-xl hover:opacity-90 transition-all active:scale-95 shadow-lg"
-                                        >
-                                            <CheckCircle size={18} />
-                                            <span className="font-bold text-xs uppercase tracking-widest">Complete</span>
-                                        </button>
+                                        <div className="flex flex-col items-end space-y-2">
+                                            {completingPhase === phase.name ? (
+                                                <div className="flex flex-col items-end space-y-2 bg-gray-50 p-3 rounded-xl border border-gray-200">
+                                                    <div className="flex items-center space-x-2">
+                                                        <input
+                                                            type="url"
+                                                            placeholder="Deliverable URL (optional)"
+                                                            value={deliverableUrl}
+                                                            onChange={(e) => setDeliverableUrl(e.target.value)}
+                                                            className="px-3 py-2 border border-gray-300 rounded-lg text-sm w-56 focus:outline-none focus:ring-2 focus:ring-[#453abc]/30 focus:border-[#453abc]"
+                                                        />
+                                                        <button
+                                                            onClick={() => {
+                                                                handleUpdatePhaseStatus(phase.project._id, phase.name, 'Completed (Dev)', deliverableUrl);
+                                                                setCompletingPhase(null);
+                                                                setDeliverableUrl('');
+                                                            }}
+                                                            className="flex items-center space-x-2 px-4 py-2.5 bg-green-600 text-white rounded-xl hover:bg-green-700 transition-all active:scale-95 shadow-lg"
+                                                        >
+                                                            <CheckCircle size={18} />
+                                                            <span className="font-bold text-xs uppercase tracking-widest">Confirm</span>
+                                                        </button>
+                                                    </div>
+                                                    <button
+                                                        onClick={() => {
+                                                            handleUpdatePhaseStatus(phase.project._id, phase.name, 'Completed (Dev)');
+                                                            setCompletingPhase(null);
+                                                            setDeliverableUrl('');
+                                                        }}
+                                                        className="text-[10px] text-gray-500 hover:text-gray-700 font-medium uppercase tracking-widest"
+                                                    >
+                                                        Skip URL
+                                                    </button>
+                                                </div>
+                                            ) : (
+                                                <button
+                                                    onClick={() => setCompletingPhase(phase.name)}
+                                                    className="flex items-center space-x-2 px-6 py-2.5 bg-[#453abc] text-white rounded-xl hover:opacity-90 transition-all active:scale-95 shadow-lg"
+                                                >
+                                                    <CheckCircle size={18} />
+                                                    <span className="font-bold text-xs uppercase tracking-widest">Complete</span>
+                                                </button>
+                                            )}
+                                        </div>
                                     )}
                                     {phase.status === 'Completed (Dev)' && (
-                                        <span className="px-5 py-2.5 bg-neutral-100 text-neutral-500 rounded-xl font-bold text-xs uppercase tracking-widest border border-neutral-200">
-                                            Under SQA Review
-                                        </span>
+                                        <div className="flex flex-col items-end space-y-1">
+                                            <span className="px-5 py-2.5 bg-neutral-100 text-neutral-500 rounded-xl font-bold text-xs uppercase tracking-widest border border-neutral-200">
+                                                Under SQA Review
+                                            </span>
+                                            {phase.deliverableUrl && (
+                                                <a href={phase.deliverableUrl} target="_blank" rel="noopener noreferrer" className="flex items-center space-x-1 text-[10px] text-[#453abc] hover:underline font-medium">
+                                                    <ExternalLink size={12} />
+                                                    <span>View Deliverable</span>
+                                                </a>
+                                            )}
+                                        </div>
                                     )}
                                     {phase.status === 'Under SQA' && (
                                         <span className="px-5 py-2.5 bg-blue-50 text-blue-600 rounded-xl font-bold text-xs uppercase tracking-widest border border-blue-100">
@@ -343,9 +401,9 @@ const AssignedTasks = () => {
                 <div className="flex items-center space-x-3 mb-2">
                     <div className={clsx(
                         "w-2 h-6 rounded-full",
-                        title === 'High' ? "bg-[#fa2742]" : title === 'Medium' ? "bg-blue-500" : "bg-gray-400"
+                        title === 'High' ? "bg-[#453abc]" : title === 'Medium' ? "bg-blue-500" : "bg-gray-400"
                     )} />
-                    <h3 className="text-sm font-black uppercase tracking-widest text-[#373833]/60 italic">
+                    <h3 className="text-sm font-black uppercase tracking-widest text-[#191a23]/60 italic">
                         {title} Priority Regular Tasks
                     </h3>
                 </div>
@@ -355,19 +413,25 @@ const AssignedTasks = () => {
                             <div className="flex justify-between items-start mb-3">
                                 <div className="flex-1">
                                     <div className="flex items-center space-x-2 mb-1">
-                                        <Layout size={16} className="text-[#373833]/40" />
-                                        <span className="text-sm font-bold text-[#373833]/60">
+                                        <Layout size={16} className="text-[#191a23]/40" />
+                                        <span className="text-sm font-bold text-[#191a23]/60">
                                             {task.project?.title || 'No Project'}
                                         </span>
                                     </div>
                                     <div className="flex items-center space-x-3 mb-2">
-                                        <h3 className="text-lg font-bold text-[#373833]">{task.title}</h3>
+                                        <h3 className="text-lg font-bold text-[#191a23]">{task.title}</h3>
                                         <span className={`px-2 py-1 rounded-full text-xs font-bold ${getStatusColor(task.status)}`}>
                                             {task.status}
                                         </span>
                                     </div>
                                     <p className="text-gray-600 mb-2">{task.description}</p>
                                     <div className="flex items-center space-x-4 text-sm text-gray-500">
+                                        {task.dueDate && (
+                                            <span className="flex items-center space-x-1">
+                                                <Calendar size={14} />
+                                                <span>Due: {new Date(task.dueDate).toLocaleDateString()}</span>
+                                            </span>
+                                        )}
                                         <span className="flex items-center space-x-1">
                                             <Clock size={14} />
                                             <span>{new Date(task.createdAt).toLocaleDateString()}</span>
@@ -405,19 +469,19 @@ const AssignedTasks = () => {
     return (
         <div>
             <div className="flex items-center justify-between mb-6">
-                <h1 className="text-3xl font-bold text-[#373833]">Assigned Tasks</h1>
+                <h1 className="text-3xl font-bold text-[#191a23]">Assigned Tasks</h1>
                 <div className="flex items-center space-x-4">
-                    <span className="text-sm text-[#373833]/60">
+                    <span className="text-sm text-[#191a23]/60">
                         {sortedPhases.length} project phases
                     </span>
-                    <span className="text-sm text-[#373833]/60">
+                    <span className="text-sm text-[#191a23]/60">
                         {sortedTasks.length} regular tasks
                     </span>
                 </div>
             </div>
 
             {loading ? (
-                <div className="text-center py-10 text-[#373833]/40 font-medium italic">
+                <div className="text-center py-10 text-[#191a23]/40 font-medium italic">
                     Loading...
                 </div>
             ) : (
@@ -425,7 +489,7 @@ const AssignedTasks = () => {
                     {/* Project Phases Section */}
                     {sortedPhases.length > 0 && (
                         <div>
-                            <h2 className="text-xl font-bold text-[#373833] mb-6 flex items-center space-x-2 pb-2 border-b-2 border-[#373833]/5">
+                            <h2 className="text-xl font-bold text-[#191a23] mb-6 flex items-center space-x-2 pb-2 border-b-2 border-[#191a23]/5">
                                 <Layout size={20} />
                                 <span>Project Phases</span>
                             </h2>
@@ -445,7 +509,7 @@ const AssignedTasks = () => {
                     {/* Regular Tasks Section */}
                     {sortedTasks.length > 0 && (
                         <div className="pt-8">
-                            <h2 className="text-xl font-bold text-[#373833] mb-6 flex items-center space-x-2 pb-2 border-b-2 border-[#373833]/5">
+                            <h2 className="text-xl font-bold text-[#191a23] mb-6 flex items-center space-x-2 pb-2 border-b-2 border-[#191a23]/5">
                                 <CheckCircle2 size={20} />
                                 <span>Regular Tasks</span>
                             </h2>
@@ -467,7 +531,7 @@ const AssignedTasks = () => {
                         <div className="text-center py-10 bg-white rounded-2xl border border-gray-100">
                             <div className="flex flex-col items-center justify-center space-y-3">
                                 <CheckCircle size={48} className="text-green-500" />
-                                <p className="text-[#373833]/60 font-medium">No assigned tasks. Great job!</p>
+                                <p className="text-[#191a23]/60 font-medium">No assigned tasks. Great job!</p>
                             </div>
                         </div>
                     )}
@@ -478,3 +542,4 @@ const AssignedTasks = () => {
 };
 
 export default AssignedTasks;
+

@@ -2,6 +2,14 @@ import mongoose from 'mongoose';
 
 const projectSchema = mongoose.Schema(
     {
+        workspace: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Workspace',
+        },
+        department: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Department',
+        },
         title: {
             type: String,
             required: true,
@@ -51,6 +59,25 @@ const projectSchema = mongoose.Schema(
         documentURL: {
             type: String,
         },
+        budget: {
+            currency: { type: String, default: 'USD' },
+            estimated: { type: Number, default: 0 },
+            spent: { type: Number, default: 0 },
+        },
+        files: [
+            {
+                name: String,
+                url: String,
+                public_id: String,
+                type: { type: String },
+                size: Number,
+                uploadedBy: {
+                    type: mongoose.Schema.Types.ObjectId,
+                    ref: 'User',
+                },
+                uploadedAt: { type: Date, default: Date.now },
+            }
+        ],
         updates: [
             {
                 time: String,
@@ -93,6 +120,9 @@ const projectSchema = mongoose.Schema(
                         createdAt: { type: Date, default: Date.now }
                     }
                 ],
+                deliverableUrl: String,
+                clientApproved: { type: Boolean, default: false },
+                clientApprovedAt: Date,
                 completedByDevAt: Date,
                 completedBySQAAt: Date,
                 points: {

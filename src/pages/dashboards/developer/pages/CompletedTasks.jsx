@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+﻿import React, { useState, useEffect } from 'react';
 import {
     CheckCircle,
     Calendar,
@@ -130,13 +130,13 @@ const CompletedTasks = () => {
     return (
         <div>
             <div className="flex items-center justify-between mb-6">
-                <h1 className="text-3xl font-bold text-[#373833]">Completed Tasks</h1>
+                <h1 className="text-3xl font-bold text-[#191a23]">Completed Tasks</h1>
                 <div className="flex items-center space-x-4">
                     <span className="flex items-center space-x-1 text-sm text-green-600">
                         <CheckCircle size={16} />
                         <span>{sortedPhases.length} phases completed</span>
                     </span>
-                    <span className="flex items-center space-x-1 text-sm text-[#373833]/60">
+                    <span className="flex items-center space-x-1 text-sm text-[#191a23]/60">
                         <CheckCircle2 size={16} />
                         <span>{sortedTasks.length} tasks completed</span>
                     </span>
@@ -144,7 +144,7 @@ const CompletedTasks = () => {
             </div>
 
             {loading ? (
-                <div className="text-center py-10 text-[#373833]/40 font-medium italic">
+                <div className="text-center py-10 text-[#191a23]/40 font-medium italic">
                     Loading completed tasks...
                 </div>
             ) : (
@@ -152,7 +152,7 @@ const CompletedTasks = () => {
                     {/* Completed Phases Section */}
                     {sortedPhases.length > 0 && (
                         <div>
-                            <h2 className="text-xl font-bold text-[#373833] mb-4 flex items-center space-x-2">
+                            <h2 className="text-xl font-bold text-[#191a23] mb-4 flex items-center space-x-2">
                                 <Layout size={20} />
                                 <span>Completed Project Phases</span>
                             </h2>
@@ -162,13 +162,13 @@ const CompletedTasks = () => {
                                         <div className="flex justify-between items-start">
                                             <div className="flex-1">
                                                 <div className="flex items-center space-x-2 mb-2">
-                                                    <Layout size={16} className="text-[#373833]/40" />
-                                                    <span className="text-sm font-bold text-[#373833]/60">
+                                                    <Layout size={16} className="text-[#191a23]/40" />
+                                                    <span className="text-sm font-bold text-[#191a23]/60">
                                                         {phase.project?.title || 'Unknown Project'}
                                                     </span>
                                                 </div>
                                                 <div className="flex items-center space-x-3 mb-2">
-                                                    <h3 className={`text-lg font-bold text-[#373833] ${phase.status === 'Completed' ? 'line-through' : ''}`}>{phase.name}</h3>
+                                                    <h3 className={`text-lg font-bold text-[#191a23] ${phase.status === 'Completed' ? 'line-through' : ''}`}>{phase.name}</h3>
                                                     <span className={`px-2 py-1 rounded-full text-xs font-bold ${getPhaseStatusColor(phase.status)}`}>
                                                         {phase.status === 'Completed (Dev)' ? 'Waiting for SQA' : phase.status}
                                                     </span>
@@ -181,7 +181,7 @@ const CompletedTasks = () => {
                                                         <Calendar size={14} />
                                                         <span>Target: {phase.deadline || 'N/A'}</span>
                                                     </span>
-                                                    <span>•</span>
+                                                    <span>â€¢</span>
                                                     <span className="flex items-center space-x-1">
                                                         <CheckCircle2 size={14} />
                                                         <span>SQA: {phase.sqa?.name || 'Assigned'}</span>
@@ -201,7 +201,7 @@ const CompletedTasks = () => {
                     {/* Completed Regular Tasks Section */}
                     {sortedTasks.length > 0 && (
                         <div>
-                            <h2 className="text-xl font-bold text-[#373833] mb-4 flex items-center space-x-2">
+                            <h2 className="text-xl font-bold text-[#191a23] mb-4 flex items-center space-x-2">
                                 <CheckCircle2 size={20} />
                                 <span>Completed Regular Tasks</span>
                             </h2>
@@ -211,13 +211,13 @@ const CompletedTasks = () => {
                                         <div className="flex justify-between items-start">
                                             <div className="flex-1">
                                                 <div className="flex items-center space-x-2 mb-2">
-                                                    <Layout size={16} className="text-[#373833]/40" />
-                                                    <span className="text-sm font-bold text-[#373833]/60">
+                                                    <Layout size={16} className="text-[#191a23]/40" />
+                                                    <span className="text-sm font-bold text-[#191a23]/60">
                                                         {task.project?.title || 'No Project'}
                                                     </span>
                                                 </div>
                                                 <div className="flex items-center space-x-3 mb-2">
-                                                    <h3 className="text-lg font-bold text-[#373833] line-through">{task.title}</h3>
+                                                    <h3 className="text-lg font-bold text-[#191a23] line-through">{task.title}</h3>
                                                     <span className="px-2 py-1 rounded-full text-xs font-bold bg-green-100 text-green-700">
                                                         Completed
                                                     </span>
@@ -228,7 +228,7 @@ const CompletedTasks = () => {
                                                         <Calendar size={14} />
                                                         <span>Completed: {new Date(task.updatedAt).toLocaleDateString()}</span>
                                                     </span>
-                                                    <span>•</span>
+                                                    <span>â€¢</span>
                                                     <span className="flex items-center space-x-1">
                                                         <Clock size={14} />
                                                         <span>{getTimeAgo(task.updatedAt)}</span>
@@ -250,8 +250,8 @@ const CompletedTasks = () => {
                         <div className="text-center py-20 bg-white rounded-2xl border-2 border-dashed border-gray-100">
                             <div className="flex flex-col items-center justify-center space-y-3">
                                 <CheckCircle size={48} className="text-gray-300" />
-                                <p className="text-[#373833]/40 font-medium">No completed tasks yet.</p>
-                                <p className="text-sm text-[#373833]/30">Complete phases from Assigned Tasks to see them here.</p>
+                                <p className="text-[#191a23]/40 font-medium">No completed tasks yet.</p>
+                                <p className="text-sm text-[#191a23]/30">Complete phases from Assigned Tasks to see them here.</p>
                             </div>
                         </div>
                     )}
@@ -262,3 +262,4 @@ const CompletedTasks = () => {
 };
 
 export default CompletedTasks;
+

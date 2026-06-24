@@ -1,5 +1,6 @@
 import Invoice from '../models/Invoice.js';
 import { createNotification } from './notificationController.js';
+import uploadToCloudinary from '../utils/fileUpload.js';
 
 // @desc    Get all invoices
 // @route   GET /api/invoices
@@ -28,21 +29,29 @@ const createInvoice = async (req, res) => {
     const targetClientId = req.user.role === 'CLIENT' ? req.user._id : client;
 
     try {
+        let finalDocumentURL = documentURL;
+        let documentPublicId = null;
+
+        if (req.file) {
+            const result = await uploadToCloudinary(req.file.buffer, 'invoices');
+            finalDocumentURL = result.secure_url;
+            documentPublicId = result.public_id;
+        }
+
         const invoice = await Invoice.create({
             title,
             client: targetClientId,
             companyName: companyName || (req.user.role === 'CLIENT' ? req.user.companyName : ''),
-            documentURL,
+            documentURL: finalDocumentURL,
+            documentPublicId,
             amount,
             dueDate,
-            status: req.user.role === 'CLIENT' ? 'Paid' : 'Unpaid' // If client uploads, mark as Paid/Sent
+            status: req.user.role === 'CLIENT' ? 'Paid' : 'Unpaid'
         });
 
         const populatedInvoice = await Invoice.findById(invoice._id).populate('client', 'name email companyName');
 
-        // Notification logic
         if (req.user.role === 'ADMIN') {
-            // Notify Client
             await createNotification(
                 client,
                 'New Invoice Issued',
@@ -50,11 +59,6 @@ const createInvoice = async (req, res) => {
                 'INVOICE',
                 '/client/invoices'
             );
-        } else {
-            // Notify Admin (Multiple admins might exist, but usually we notify a set or the main one)
-            // For now, let's assume we can notify the main admin or just skip if logic is complex
-            // Usually, we'd find users with role ADMIN
-            // await createNotification(adminId, ...)
         }
 
         res.status(201).json(populatedInvoice);
@@ -87,24 +91,29 @@ const updateInvoiceStatus = async (req, res) => {
 const uploadReceipt = async (req, res) => {
     try {
         const invoice = await Invoice.findById(req.params.id);
-        if (invoice) {
-            if (invoice.client.toString() !== req.user._id.toString()) {
-                return res.status(403).json({ message: 'Not authorized' });
-            }
-            invoice.receiptURL = req.body.receiptURL;
-            invoice.status = 'Paid'; // Automatically mark as paid for now, or use 'Pending Verification'
-            const updatedInvoice = await invoice.save();
-
-            // Notify Admin about receipt
-            // Mocking admin notification - in real usage you'd find all admins
-            // For now, let's assume there's at least one admin to notify or we create notification for a generic admin bucket if needed
-            // However, the system usually has specific admins. 
-            // Better: find any ADMIN user and notify them.
-
-            res.json(updatedInvoice);
-        } else {
-            res.status(404).json({ message: 'Invoice not found' });
+        if (!invoice) {
+            return res.status(404).json({ message: 'Invoice not found' });
         }
+
+        if (invoice.client.toString() !== req.user._id.toString()) {
+            return res.status(403).json({ message: 'Not authorized' });
+        }
+
+        let receiptURL = invoice.receiptURL;
+        let receiptPublicId = invoice.receiptPublicId;
+
+        if (req.file) {
+            const result = await uploadToCloudinary(req.file.buffer, 'receipts');
+            receiptURL = result.secure_url;
+            receiptPublicId = result.public_id;
+        }
+
+        invoice.receiptURL = receiptURL;
+        invoice.receiptPublicId = receiptPublicId;
+        invoice.status = 'Paid';
+        const updatedInvoice = await invoice.save();
+
+        res.json(updatedInvoice);
     } catch (error) {
         res.status(400).json({ message: error.message });
     }

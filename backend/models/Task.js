@@ -25,6 +25,18 @@ const taskSchema = mongoose.Schema(
             ref: 'Project',
             required: true,
         },
+        milestone: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Milestone',
+        },
+        phase: {
+            type: String,
+        },
+        parentTask: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Task',
+            default: null,
+        },
         assignedTo: {
             type: mongoose.Schema.Types.ObjectId,
             ref: 'User',

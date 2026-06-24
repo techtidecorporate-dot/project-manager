@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+﻿import React, { useState, useEffect } from 'react';
 import {
     Zap,
     Send,
@@ -123,7 +123,7 @@ const PMRequests = () => {
             case 'completed': return 'text-green-600 bg-green-500/10';
             case 'pending': return 'text-orange-500 bg-orange-500/10';
             case 'open': return 'text-blue-500 bg-blue-500/10';
-            case 'in progress': return 'text-[#fa2742] bg-[#fa2742]/10';
+            case 'in progress': return 'text-[#453abc] bg-[#453abc]/10';
             case 'closed': return 'text-gray-500 bg-gray-500/10';
             default: return 'text-gray-500 bg-gray-500/10';
         }
@@ -141,17 +141,17 @@ const PMRequests = () => {
         <div className="space-y-8 pb-10">
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
                 <div>
-                    <h2 className="text-3xl font-bold text-[#373833] tracking-tight">Support Desk</h2>
-                    <p className="text-[#373833]/60 font-medium text-xs">Submit requests and complaints — all in one place.</p>
+                    <h2 className="text-3xl font-bold text-[#191a23] tracking-tight">Support Desk</h2>
+                    <p className="text-[#191a23]/60 font-medium text-xs">Submit requests and complaints â€” all in one place.</p>
                 </div>
                 <div className="flex items-center gap-3">
-                    <div className="flex items-center space-x-2 bg-white border border-[#373833]/5 px-4 py-2 rounded-xl shadow-sm">
-                        <Zap className="text-[#fa2742]" size={16} />
-                        <span className="text-[10px] font-black uppercase tracking-widest text-[#373833]">Transmission Active</span>
+                    <div className="flex items-center space-x-2 bg-white border border-[#191a23]/5 px-4 py-2 rounded-xl shadow-sm">
+                        <Zap className="text-[#453abc]" size={16} />
+                        <span className="text-[10px] font-black uppercase tracking-widest text-[#191a23]">Transmission Active</span>
                     </div>
-                    <div className="flex items-center bg-white px-4 py-2 rounded-xl shadow-sm border border-[#373833]/5">
-                        <AlertCircle size={16} className="text-[#fa2742] mr-2" />
-                        <span className="text-xs font-black text-[#373833] uppercase">{requests.filter(r => r.status === 'Pending').length} Pending</span>
+                    <div className="flex items-center bg-white px-4 py-2 rounded-xl shadow-sm border border-[#191a23]/5">
+                        <AlertCircle size={16} className="text-[#453abc] mr-2" />
+                        <span className="text-xs font-black text-[#191a23] uppercase">{requests.filter(r => r.status === 'Pending').length} Pending</span>
                     </div>
                 </div>
             </div>
@@ -159,17 +159,17 @@ const PMRequests = () => {
             <div className="grid lg:grid-cols-3 gap-5">
                 {/* Request Form */}
                 <div className="lg:col-span-2">
-                    <div className="bg-white rounded-2xl p-5 shadow-md border border-[#373833]/5 max-h-[480px] overflow-y-auto">
+                    <div className="bg-white rounded-2xl p-5 shadow-md border border-[#191a23]/5 max-h-[480px] overflow-y-auto">
                         <div className="flex items-center space-x-2 mb-4">
-                            <div className="w-8 h-8 bg-[#fa2742]/10 text-[#fa2742] rounded-lg flex items-center justify-center">
+                            <div className="w-8 h-8 bg-[#453abc]/10 text-[#453abc] rounded-lg flex items-center justify-center">
                                 <FileText size={16} />
                             </div>
-                            <h3 className="text-base font-black text-[#373833]">New Submission</h3>
+                            <h3 className="text-base font-black text-[#191a23]">New Submission</h3>
                         </div>
 
                         <form onSubmit={handleSubmit} className="space-y-3">
                             <div>
-                                <label className="block text-[10px] font-black text-[#373833] uppercase tracking-widest mb-1.5 ml-1">Title</label>
+                                <label className="block text-[10px] font-black text-[#191a23] uppercase tracking-widest mb-1.5 ml-1">Title</label>
                                 <input
                                     type="text"
                                     name="title"
@@ -177,30 +177,30 @@ const PMRequests = () => {
                                     onChange={handleInputChange}
                                     required
                                     placeholder="Enter a clear, concise title..."
-                                    className="w-full bg-gray-50 border-2 border-transparent focus:border-[#fa2742]/20 rounded-xl px-4 py-2.5 text-sm font-bold focus:bg-white transition-all outline-none"
+                                    className="w-full bg-gray-50 border-2 border-transparent focus:border-[#453abc]/20 rounded-xl px-4 py-2.5 text-sm font-bold focus:bg-white transition-all outline-none"
                                 />
                             </div>
 
                             <div className="grid grid-cols-3 gap-3">
                                 <div>
-                                    <label className="block text-[10px] font-black text-[#373833] uppercase tracking-widest mb-1.5 ml-1">Category</label>
+                                    <label className="block text-[10px] font-black text-[#191a23] uppercase tracking-widest mb-1.5 ml-1">Category</label>
                                     <select
                                         name="category"
                                         value={formData.category}
                                         onChange={handleInputChange}
-                                        className="w-full bg-gray-50 border-2 border-transparent focus:border-[#fa2742]/20 rounded-xl px-3 py-2.5 text-xs font-bold outline-none"
+                                        className="w-full bg-gray-50 border-2 border-transparent focus:border-[#453abc]/20 rounded-xl px-3 py-2.5 text-xs font-bold outline-none"
                                     >
                                         <option value="Request">Request</option>
                                         <option value="Compliance">Complaint</option>
                                     </select>
                                 </div>
                                 <div>
-                                    <label className="block text-[10px] font-black text-[#373833] uppercase tracking-widest mb-1.5 ml-1">Type</label>
+                                    <label className="block text-[10px] font-black text-[#191a23] uppercase tracking-widest mb-1.5 ml-1">Type</label>
                                     <select
                                         name="type"
                                         value={formData.type}
                                         onChange={handleInputChange}
-                                        className="w-full bg-gray-50 border-2 border-transparent focus:border-[#fa2742]/20 rounded-xl px-3 py-2.5 text-xs font-bold outline-none"
+                                        className="w-full bg-gray-50 border-2 border-transparent focus:border-[#453abc]/20 rounded-xl px-3 py-2.5 text-xs font-bold outline-none"
                                     >
                                         <option value="Support">Support</option>
                                         <option value="Bug">Bug Report</option>
@@ -210,12 +210,12 @@ const PMRequests = () => {
                                     </select>
                                 </div>
                                 <div>
-                                    <label className="block text-[10px] font-black text-[#373833] uppercase tracking-widest mb-1.5 ml-1">Priority</label>
+                                    <label className="block text-[10px] font-black text-[#191a23] uppercase tracking-widest mb-1.5 ml-1">Priority</label>
                                     <select
                                         name="priority"
                                         value={formData.priority}
                                         onChange={handleInputChange}
-                                        className="w-full bg-gray-50 border-2 border-transparent focus:border-[#fa2742]/20 rounded-xl px-3 py-2.5 text-xs font-bold outline-none"
+                                        className="w-full bg-gray-50 border-2 border-transparent focus:border-[#453abc]/20 rounded-xl px-3 py-2.5 text-xs font-bold outline-none"
                                     >
                                         <option value="Low">Low</option>
                                         <option value="Medium">Medium</option>
@@ -226,7 +226,7 @@ const PMRequests = () => {
                             </div>
 
                             <div>
-                                <label className="block text-[10px] font-black text-[#373833] uppercase tracking-widest mb-1.5 ml-1">Description</label>
+                                <label className="block text-[10px] font-black text-[#191a23] uppercase tracking-widest mb-1.5 ml-1">Description</label>
                                 <textarea
                                     name="description"
                                     value={formData.description}
@@ -234,14 +234,14 @@ const PMRequests = () => {
                                     required
                                     rows="3"
                                     placeholder="Provide detailed information..."
-                                    className="w-full bg-gray-50 border-2 border-transparent focus:border-[#fa2742]/20 rounded-xl px-4 py-2.5 text-sm font-bold focus:bg-white transition-all outline-none resize-none"
+                                    className="w-full bg-gray-50 border-2 border-transparent focus:border-[#453abc]/20 rounded-xl px-4 py-2.5 text-sm font-bold focus:bg-white transition-all outline-none resize-none"
                                 />
                             </div>
 
                             <button
                                 type="submit"
                                 disabled={isSubmitting}
-                                className="w-full py-2.5 bg-[#373833] text-white rounded-xl font-black uppercase tracking-widest text-xs hover:bg-[#fa2742] transition-all shadow-md active:scale-95 disabled:opacity-50"
+                                className="w-full py-2.5 bg-gradient-to-br from-[#453abc] to-[#60c3e3]  text-white rounded-xl font-black uppercase tracking-widest text-xs hover:bg-[#453abc] transition-all shadow-md active:scale-95 disabled:opacity-50"
                             >
                                 {isSubmitting ? 'Sending...' : 'Transmit to Admin'}
                             </button>
@@ -251,8 +251,8 @@ const PMRequests = () => {
 
                 {/* Sidebar Stats */}
                 <div className="space-y-4">
-                    <div className="bg-white p-4 rounded-2xl shadow-md border border-[#373833]/5 text-center">
-                        <h4 className="text-[10px] font-black text-[#373833]/40 uppercase tracking-widest mb-3">Overview</h4>
+                    <div className="bg-white p-4 rounded-2xl shadow-md border border-[#191a23]/5 text-center">
+                        <h4 className="text-[10px] font-black text-[#191a23]/40 uppercase tracking-widest mb-3">Overview</h4>
                         <div className="grid grid-cols-2 gap-2">
                             <div className="bg-blue-50 p-3 rounded-2xl">
                                 <p className="text-xl font-black text-blue-600">{requests.length}</p>
@@ -272,9 +272,9 @@ const PMRequests = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="bg-[#373833] p-4 rounded-2xl shadow-md text-[#fa2742]">
+                    <div className="bg-gray-800 p-4 rounded-2xl shadow-md text-[#453abc]">
                         <AlertCircle className="mb-2" size={18} />
-                        <p className="text-xs font-bold text-[#e8eae3] leading-relaxed">
+                        <p className="text-xs font-bold text-[#ffffff] leading-relaxed">
                             All transmissions are routed directly to Management. Use "Urgent" priority only for critical issues.
                         </p>
                     </div>
@@ -288,8 +288,8 @@ const PMRequests = () => {
                         key={filter}
                         onClick={() => setSelectedFilter(filter)}
                         className={`px-5 py-2.5 rounded-xl font-black text-xs uppercase tracking-widest transition-all ${selectedFilter === filter
-                            ? 'bg-[#373833] text-white shadow-lg'
-                            : 'bg-white text-[#373833]/60 hover:text-[#373833] border border-[#373833]/5 shadow-sm'
+                            ? 'bg-gray-700 text-white shadow-lg'
+                            : 'bg-white text-[#191a23]/60 hover:text-[#191a23] border border-[#191a23]/5 shadow-sm'
                             }`}
                     >
                         {filter}
@@ -308,9 +308,9 @@ const PMRequests = () => {
 
             {/* Unified List */}
             <div className="space-y-4">
-                <h3 className="text-2xl font-black text-[#373833]">Transmission History</h3>
+                <h3 className="text-2xl font-black text-[#191a23]">Transmission History</h3>
                 {loading ? (
-                    <div className="text-center py-12 text-[#373833]/40 italic font-bold text-sm uppercase tracking-widest">Receiving Frequencies...</div>
+                    <div className="text-center py-12 text-[#191a23]/40 italic font-bold text-sm uppercase tracking-widest">Receiving Frequencies...</div>
                 ) : filteredRequests.length > 0 ? (
                     filteredRequests.map((req) => {
                         const isExpanded = expandedId === req._id;
@@ -319,27 +319,27 @@ const PMRequests = () => {
                         const isComplaint = (req.category || 'Request').toLowerCase() === 'compliance';
 
                         return (
-                            <div key={req._id} className={`bg-white rounded-[32px] border border-[#373833]/5 overflow-hidden shadow-sm transition-all ${isExpanded ? 'ring-2 ring-[#fa2742]/10 shadow-xl' : 'hover:border-[#fa2742]/20'}`}>
+                            <div key={req._id} className={`bg-white rounded-[32px] border border-[#191a23]/5 overflow-hidden shadow-sm transition-all ${isExpanded ? 'ring-2 ring-[#453abc]/10 shadow-xl' : 'hover:border-[#453abc]/20'}`}>
                                 <div
                                     className="p-6 cursor-pointer select-none flex items-center justify-between"
-                                    onClick={() => setExpandedId(isExpanded ? null : req._id)}
+                                    onClick={() => setExpandedId(prev => prev === req._id ? null : req._id)}
                                 >
                                     <div className="flex items-center space-x-4">
-                                        <div className="w-12 h-12 bg-[#373833]/5 rounded-2xl flex items-center justify-center text-[#373833]">
+                                        <div className="w-12 h-12 bg-[#191a23]/5 rounded-2xl flex items-center justify-center text-[#191a23]">
                                             <MessageSquare size={20} />
                                         </div>
                                         <div>
-                                            <h4 className="font-black text-[#373833]">{req.title}</h4>
+                                            <h4 className="font-black text-[#191a23]">{req.title}</h4>
                                             <div className="flex flex-wrap items-center gap-2 mt-1">
                                                 <span className={`text-[10px] font-black px-2 py-0.5 rounded-md uppercase ${getPriorityColor(req.priority)}`}>{req.priority}</span>
-                                                <span className="text-[#373833]/20">•</span>
+                                                <span className="text-[#191a23]/20">â€¢</span>
                                                 <span className={`text-[10px] font-black px-2 py-0.5 rounded-md uppercase ${getStatusColor(req.status)}`}>{req.status}</span>
-                                                <span className="text-[#373833]/20">•</span>
+                                                <span className="text-[#191a23]/20">â€¢</span>
                                                 <span className={`text-[10px] font-black px-2 py-0.5 rounded-md uppercase ${isComplaint ? 'bg-purple-100 text-purple-600' : 'bg-blue-100 text-blue-600'}`}>
                                                     {isComplaint ? 'Complaint' : 'Request'}
                                                 </span>
-                                                <span className="text-[#373833]/20">•</span>
-                                                <span className="text-[10px] font-black text-[#373833]/30">{req.messages?.length || 0} msgs</span>
+                                                <span className="text-[#191a23]/20">â€¢</span>
+                                                <span className="text-[10px] font-black text-[#191a23]/30">{req.messages?.length || 0} msgs</span>
                                             </div>
                                         </div>
                                     </div>
@@ -354,15 +354,15 @@ const PMRequests = () => {
                                                 const isMe = senderId?.toString() === currentUser._id?.toString();
                                                 return (
                                                     <div key={i} className={`flex ${isMe ? 'justify-end' : 'justify-start'}`}>
-                                                        <div className={`max-w-[80%] p-4 rounded-2xl shadow-sm ${isMe ? 'bg-[#373833] text-white rounded-tr-none' : 'bg-white text-[#373833] rounded-tl-none border border-[#373833]/5'}`}>
+                                                        <div className={`max-w-[80%] p-4 rounded-2xl shadow-sm ${isMe ? 'bg-[#191a23] text-white rounded-tr-none' : 'bg-white text-[#191a23] rounded-tl-none border border-[#191a23]/5'}`}>
                                                             <p className="text-sm font-medium">{msg.content}</p>
-                                                            <p className={`text-[9px] font-black uppercase mt-2 ${isMe ? 'text-white/40' : 'text-[#373833]/30'}`}>
-                                                                {isMe ? 'You' : (typeof msg.sender === 'object' ? msg.sender?.name : 'Admin')} • {new Date(msg.createdAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+                                                            <p className={`text-[9px] font-black uppercase mt-2 ${isMe ? 'text-white/40' : 'text-[#191a23]/30'}`}>
+                                                                {isMe ? 'You' : (typeof msg.sender === 'object' ? msg.sender?.name : 'Admin')} â€¢ {new Date(msg.createdAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
                                                             </p>
                                                         </div>
                                                     </div>
                                                 );
-                                            }) : <p className="text-center text-sm text-[#373833]/30 italic py-4">No messages yet.</p>}
+                                            }) : <p className="text-center text-sm text-[#191a23]/30 italic py-4">No messages yet.</p>}
                                         </div>
 
                                         {req.status !== 'Closed' && req.status !== 'Resolved' && (
@@ -373,12 +373,12 @@ const PMRequests = () => {
                                                     onChange={(e) => setReplyMap(prev => ({ ...prev, [req._id]: e.target.value }))}
                                                     onKeyDown={(e) => { if (e.key === 'Enter') handleReply(req._id); }}
                                                     placeholder="Type your reply..."
-                                                    className="flex-1 bg-white border-2 border-gray-100 focus:border-[#fa2742] rounded-xl px-3 py-2 text-sm font-bold outline-none transition-all"
+                                                    className="flex-1 bg-white border-2 border-gray-100 focus:border-[#453abc] rounded-xl px-3 py-2 text-sm font-bold outline-none transition-all"
                                                 />
                                                 <button
                                                     onClick={() => handleReply(req._id)}
                                                     disabled={isThisSubmitting || !currentReply.trim()}
-                                                    className="p-2 bg-[#fa2742] text-white rounded-lg hover:shadow-md transition-all disabled:opacity-40 shrink-0"
+                                                    className="p-2 bg-[#453abc] text-white rounded-lg hover:shadow-md transition-all disabled:opacity-40 shrink-0"
                                                 >
                                                     {isThisSubmitting
                                                         ? <div className="w-4 h-4 border-2 border-white/40 border-t-white rounded-full animate-spin" />
@@ -388,8 +388,8 @@ const PMRequests = () => {
                                             </div>
                                         )}
                                         {(req.status === 'Closed' || req.status === 'Resolved') && (
-                                            <p className="text-center text-xs font-black text-[#373833]/30 uppercase tracking-[0.2em] pt-4 border-t border-gray-100">
-                                                Case {req.status} — awaiting admin action to reopen
+                                            <p className="text-center text-xs font-black text-[#191a23]/30 uppercase tracking-[0.2em] pt-4 border-t border-gray-100">
+                                                Case {req.status} â€” awaiting admin action to reopen
                                             </p>
                                         )}
                                     </div>
@@ -398,9 +398,9 @@ const PMRequests = () => {
                         );
                     })
                 ) : (
-                    <div className="text-center py-20 bg-white rounded-[40px] border-2 border-dashed border-[#373833]/5">
-                        <MessageSquare size={32} className="text-[#373833]/20 mx-auto mb-3" />
-                        <p className="text-[#373833]/30 font-black uppercase tracking-[0.2em] text-xs">No submissions found</p>
+                    <div className="text-center py-20 bg-white rounded-[40px] border-2 border-dashed border-[#191a23]/5">
+                        <MessageSquare size={32} className="text-[#191a23]/20 mx-auto mb-3" />
+                        <p className="text-[#191a23]/30 font-black uppercase tracking-[0.2em] text-xs">No submissions found</p>
                     </div>
                 )}
             </div>
@@ -409,3 +409,4 @@ const PMRequests = () => {
 };
 
 export default PMRequests;
+

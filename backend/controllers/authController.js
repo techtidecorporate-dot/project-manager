@@ -1,5 +1,6 @@
 import jwt from 'jsonwebtoken';
 import User from '../models/User.js';
+import uploadToCloudinary from '../utils/fileUpload.js';
 
 const generateToken = (id) => {
     return jwt.sign({ id }, process.env.JWT_SECRET, {
@@ -121,4 +122,25 @@ const updateUser = async (req, res) => {
     }
 };
 
-export { loginUser, registerUser, getUserProfile, updateUser };
+// @desc    Upload user avatar
+// @route   PUT /api/auth/avatar
+// @access  Private
+const uploadAvatar = async (req, res) => {
+    try {
+        if (!req.file) {
+            return res.status(400).json({ message: 'No file uploaded' });
+        }
+
+        const result = await uploadToCloudinary(req.file.buffer, 'avatars');
+
+        const user = await User.findById(req.user._id);
+        user.avatar = result.secure_url;
+        await user.save();
+
+        res.json({ avatar: user.avatar });
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+};
+
+export { loginUser, registerUser, getUserProfile, updateUser, uploadAvatar };

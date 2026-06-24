@@ -1,3 +1,86 @@
+[{
+	"resource": "/e:/Techtide/Project_Manager-main/Project_Manager-main/src/pages/dashboards/admin/pages/AddUsers.jsx",
+	"owner": "eslint2",
+	"code": {
+		"value": "no-unused-vars",
+		"target": {
+			"$mid": 1,
+			"path": "/docs/latest/rules/no-unused-vars",
+			"scheme": "https",
+			"authority": "eslint.org"
+		}
+	},
+	"severity": 8,
+	"message": "'showPassword' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u.",
+	"source": "eslint",
+	"startLineNumber": 9,
+	"startColumn": 12,
+	"endLineNumber": 9,
+	"endColumn": 24,
+	"modelVersionId": 9,
+	"tags": [
+		1
+	],
+	"origin": "extHost1"
+},{
+	"resource": "/e:/Techtide/Project_Manager-main/Project_Manager-main/src/pages/dashboards/admin/pages/AddUsers.jsx",
+	"owner": "eslint2",
+	"code": "react-hooks/immutability",
+	"severity": 8,
+	"message": "Error: Cannot access variable before it is declared\n\n`fetchUsers` is accessed before it is declared, which prevents the earlier access from updating when this value changes over time.\n\n  23 |     useEffect(() => {\n  24 |         if (currentUser) {\n> 25 |             fetchUsers();\n     |             ^^^^^^^^^^ `fetchUsers` accessed before it is declared\n  26 |         }\n  27 |     }, [currentUser]);\n  28 |\n\n  27 |     }, [currentUser]);\n  28 |\n> 29 |     const fetchUsers = async () => {\n     |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n> 30 |         try {\n     | ^^^^^^^^^^^^^\n> 31 |             const response = await fetch('http://localhost:5000/api/auth/users', {\n     …\n     | ^^^^^^^^^^^^^\n> 44 |         }\n     | ^^^^^^^^^^^^^\n> 45 |     };\n     | ^^^^^^^ `fetchUsers` is declared here\n  46 |\n  47 |     const handleInputChange = (e) => {\n  48 |         const { name, value } = e.target;",
+	"source": "eslint",
+	"startLineNumber": 25,
+	"startColumn": 13,
+	"endLineNumber": 25,
+	"endColumn": 23,
+	"modelVersionId": 9,
+	"origin": "extHost1"
+},{
+	"resource": "/e:/Techtide/Project_Manager-main/Project_Manager-main/src/pages/dashboards/admin/pages/AddUsers.jsx",
+	"owner": "eslint2",
+	"code": {
+		"value": "no-unused-vars",
+		"target": {
+			"$mid": 1,
+			"path": "/docs/latest/rules/no-unused-vars",
+			"scheme": "https",
+			"authority": "eslint.org"
+		}
+	},
+	"severity": 8,
+	"message": "'togglePasswordVisibility' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u.",
+	"source": "eslint",
+	"startLineNumber": 100,
+	"startColumn": 11,
+	"endLineNumber": 100,
+	"endColumn": 35,
+	"modelVersionId": 9,
+	"tags": [
+		1
+	],
+	"origin": "extHost1"
+},{
+	"resource": "/e:/Techtide/Project_Manager-main/Project_Manager-main/src/pages/dashboards/admin/pages/AddUsers.jsx",
+	"owner": "eslint2",
+	"code": {
+		"value": "react-hooks/exhaustive-deps",
+		"target": {
+			"$mid": 1,
+			"path": "/facebook/react/issues/14920",
+			"scheme": "https",
+			"authority": "github.com"
+		}
+	},
+	"severity": 4,
+	"message": "React Hook useEffect has a missing dependency: 'fetchUsers'. Either include it or remove the dependency array.",
+	"source": "eslint",
+	"startLineNumber": 27,
+	"startColumn": 8,
+	"endLineNumber": 27,
+	"endColumn": 21,
+	"modelVersionId": 9,
+	"origin": "extHost1"
+}]
 import React, { useState, useEffect, useRef } from 'react';
 import { Bell, CheckCircle2, FileText, Send, Clock, Inbox } from 'lucide-react';
 import { useAuth } from '@/context/AuthContext';
@@ -98,7 +181,7 @@ const NotificationBell = () => {
     const getIcon = (type) => {
         switch (type) {
             case 'INVOICE': return <FileText size={14} className="text-blue-500" />;
-            case 'REQUEST': return <Send size={14} className="text-[#fa2742]" />;
+            case 'REQUEST': return <Send size={14} className="text-[#453abc]" />;
             case 'TASK': return <Clock size={14} className="text-orange-500" />;
             default: return <Inbox size={14} className="text-gray-500" />;
         }
@@ -108,11 +191,11 @@ const NotificationBell = () => {
         <div className="relative" ref={dropdownRef}>
             <button
                 onClick={() => setIsOpen(!isOpen)}
-                className="relative p-2 text-[#e8eae3] hover:text-[#fa2742] hover:bg-white/5 rounded-xl transition-all"
+                className="relative p-2 text-[#60c3e3] hover:text-[#453abc] hover:bg-white/5 rounded-xl transition-all"
             >
                 <Bell size={22} className={clsx(unreadCount > 0 && "animate-pulse")} />
                 {unreadCount > 0 && (
-                    <span className="absolute top-2 right-2 w-4 h-4 bg-[#fa2742] text-white text-[8px] font-black flex items-center justify-center rounded-full border-2 border-[#373833]">
+                    <span className="absolute top-2 right-2 w-4 h-4 bg-[#453abc] text-white text-[8px] font-black flex items-center justify-center rounded-full border-2 border-[#191a23]">
                         {unreadCount}
                     </span>
                 )}
@@ -121,11 +204,11 @@ const NotificationBell = () => {
             {isOpen && (
                 <div className="absolute right-0 mt-3 w-80 bg-white rounded-[24px] shadow-2xl border border-gray-100 overflow-hidden z-[100] animate-in slide-in-from-top-2 duration-200">
                     <div className="p-4 border-b border-gray-50 flex items-center justify-between bg-gray-50/50">
-                        <h4 className="text-[10px] font-black uppercase tracking-widest text-[#373833]">Core Notifications</h4>
+                        <h4 className="text-[10px] font-black uppercase tracking-widest text-[#191a23]">Core Notifications</h4>
                         {unreadCount > 0 && (
                             <button
                                 onClick={markAllRead}
-                                className="text-[9px] font-black text-[#fa2742] uppercase tracking-tighter hover:underline"
+                                className="text-[9px] font-black text-[#453abc] uppercase tracking-tighter hover:underline"
                             >
                                 Mark All Read
                             </button>
@@ -148,15 +231,15 @@ const NotificationBell = () => {
                                             {getIcon(n.type)}
                                         </div>
                                         <div className="flex-1 space-y-1">
-                                            <p className="text-[11px] font-black text-[#373833] uppercase leading-tight">{n.title}</p>
-                                            <p className="text-[10px] text-[#373833]/60 font-bold line-clamp-2">{n.message}</p>
-                                            <p className="text-[8px] text-[#373833]/30 font-black uppercase tracking-widest flex items-center gap-1">
+                                            <p className="text-[11px] font-black text-[#191a23] uppercase leading-tight">{n.title}</p>
+                                            <p className="text-[10px] text-[#191a23]/60 font-bold line-clamp-2">{n.message}</p>
+                                            <p className="text-[8px] text-[#191a23]/30 font-black uppercase tracking-widest flex items-center gap-1">
                                                 <Clock size={8} />
                                                 {new Date(n.createdAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
                                             </p>
                                         </div>
                                         {!n.isRead && (
-                                            <div className="w-2 h-2 bg-[#fa2742] rounded-full mt-2"></div>
+                                            <div className="w-2 h-2 bg-[#453abc] rounded-full mt-2"></div>
                                         )}
                                     </div>
                                 ))}
@@ -164,14 +247,14 @@ const NotificationBell = () => {
                         ) : (
                             <div className="p-12 text-center">
                                 <Inbox size={32} className="mx-auto text-gray-200 mb-3" />
-                                <p className="text-[10px] font-black text-[#373833]/30 uppercase tracking-[0.2em]">Silence Detected</p>
-                                <p className="text-[9px] text-[#373833]/20 font-bold mt-1">No new events in this sector</p>
+                                <p className="text-[10px] font-black text-[#191a23]/30 uppercase tracking-[0.2em]">Silence Detected</p>
+                                <p className="text-[9px] text-[#191a23]/20 font-bold mt-1">No new events in this sector</p>
                             </div>
                         )}
                     </div>
 
                     <div className="p-3 bg-gray-50/50 border-t border-gray-50 text-center">
-                        <button className="text-[9px] font-black text-[#373833]/40 uppercase tracking-widest hover:text-[#fa2742] transition-colors">
+                        <button className="text-[9px] font-black text-[#191a23]/40 uppercase tracking-widest hover:text-[#453abc] transition-colors">
                             Archive History
                         </button>
                     </div>

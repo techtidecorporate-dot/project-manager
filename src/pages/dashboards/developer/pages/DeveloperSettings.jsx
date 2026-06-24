@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { useAuth } from '../../../../context/AuthContext';
 import { User, Mail, Shield, Lock } from 'lucide-react';
 
@@ -12,22 +12,22 @@ const DeveloperSettings = () => {
         email: user?.email || 'john.dev@techtide.com',
         // Password is usually not shown directly, but user asked for "password" field. 
         // I'll show a masked version or a placeholder as it's read-only.
-        password: '••••••••••••'
+        password: 'â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢â€¢'
     };
 
     return (
         <div className="max-w-2xl mx-auto">
-            <h1 className="text-3xl font-bold text-[#373833] mb-8">My Profile Settings</h1>
+            <h1 className="text-3xl font-bold text-[#191a23] mb-8">My Profile Settings</h1>
 
             <div className="bg-white p-8 rounded-2xl shadow-sm border border-gray-200">
                 <div className="flex items-center space-x-6 mb-8 border-b border-gray-100 pb-8">
                     <img
                         src={`https://ui-avatars.com/api/?name=${userData.name}&background=fa2742&color=fff&size=128`}
                         alt={userData.name}
-                        className="w-24 h-24 rounded-full border-4 border-[#e8eae3] shadow-lg"
+                        className="w-24 h-24 rounded-full border-4 border-[#ffffff] shadow-lg"
                     />
                     <div>
-                        <h2 className="text-2xl font-bold text-[#373833]">{userData.name}</h2>
+                        <h2 className="text-2xl font-bold text-[#191a23]">{userData.name}</h2>
                         <p className="text-gray-500 font-medium">{userData.position}</p>
                     </div>
                 </div>
@@ -35,8 +35,8 @@ const DeveloperSettings = () => {
                 <div className="space-y-6">
                     {/* Name Field */}
                     <div>
-                        <label className="block text-sm font-bold text-[#373833] mb-2 flex items-center gap-2">
-                            <User size={16} className="text-[#fa2742]" />
+                        <label className="block text-sm font-bold text-[#191a23] mb-2 flex items-center gap-2">
+                            <User size={16} className="text-[#453abc]" />
                             Full Name
                         </label>
                         <input
@@ -49,8 +49,8 @@ const DeveloperSettings = () => {
 
                     {/* Position Field */}
                     <div>
-                        <label className="block text-sm font-bold text-[#373833] mb-2 flex items-center gap-2">
-                            <Shield size={16} className="text-[#fa2742]" />
+                        <label className="block text-sm font-bold text-[#191a23] mb-2 flex items-center gap-2">
+                            <Shield size={16} className="text-[#453abc]" />
                             Position
                         </label>
                         <input
@@ -63,8 +63,8 @@ const DeveloperSettings = () => {
 
                     {/* Work Email Field */}
                     <div>
-                        <label className="block text-sm font-bold text-[#373833] mb-2 flex items-center gap-2">
-                            <Mail size={16} className="text-[#fa2742]" />
+                        <label className="block text-sm font-bold text-[#191a23] mb-2 flex items-center gap-2">
+                            <Mail size={16} className="text-[#453abc]" />
                             Work Email
                         </label>
                         <input
@@ -77,8 +77,8 @@ const DeveloperSettings = () => {
 
                     {/* Password Field */}
                     <div>
-                        <label className="block text-sm font-bold text-[#373833] mb-2 flex items-center gap-2">
-                            <Lock size={16} className="text-[#fa2742]" />
+                        <label className="block text-sm font-bold text-[#191a23] mb-2 flex items-center gap-2">
+                            <Lock size={16} className="text-[#453abc]" />
                             Password
                         </label>
                         <div className="relative">
@@ -100,3 +100,4 @@ const DeveloperSettings = () => {
 };
 
 export default DeveloperSettings;
+

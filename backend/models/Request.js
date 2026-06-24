@@ -25,6 +25,10 @@ const requestSchema = mongoose.Schema(
             enum: ['Low', 'Medium', 'High', 'Urgent'],
             default: 'Medium',
         },
+        project: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Project',
+        },
         user: {
             type: mongoose.Schema.Types.ObjectId,
             ref: 'User',

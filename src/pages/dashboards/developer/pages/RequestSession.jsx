@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+﻿import React, { useState, useEffect } from 'react';
 import {
     Zap,
     Send,
@@ -155,38 +155,38 @@ const RequestSession = () => {
     });
 
     return (
-        <div className="space-y-8 pb-10 selection:bg-[#f0e4d4] selection:text-[#373833]">
+        <div className="space-y-8 pb-10 selection:bg-[#f0e4d4] selection:text-[#191a23]">
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
                 <div>
-                    <h2 className="text-3xl font-bold text-[#373833] tracking-tight">Support Desk</h2>
-                    <p className="text-[#373833]/60 font-medium text-xs">Submit requests and complaints — all in one place.</p>
+                    <h2 className="text-3xl font-bold text-[#191a23] tracking-tight">Support Desk</h2>
+                    <p className="text-[#191a23]/60 font-medium text-xs">Submit requests and complaints â€” all in one place.</p>
                 </div>
                 <div className="flex items-center gap-3">
-                    <div className="flex items-center space-x-2 bg-white border border-[#373833]/5 px-4 py-2 rounded-xl shadow-sm">
-                        <Zap className="text-[#fa2742]" size={16} />
-                        <span className="text-[10px] font-black uppercase tracking-widest text-[#373833]">Portal Active</span>
+                    <div className="flex items-center space-x-2 bg-white border border-[#191a23]/5 px-4 py-2 rounded-xl shadow-sm">
+                        <Zap className="text-[#453abc]" size={16} />
+                        <span className="text-[10px] font-black uppercase tracking-widest text-[#191a23]">Portal Active</span>
                     </div>
-                    <div className="flex items-center bg-white px-4 py-2 rounded-xl shadow-sm border border-[#373833]/5">
-                        <AlertCircle size={16} className="text-[#fa2742] mr-2" />
-                        <span className="text-xs font-black text-[#373833] uppercase">{requests.filter(r => r.status === 'Pending').length} Pending</span>
+                    <div className="flex items-center bg-white px-4 py-2 rounded-xl shadow-sm border border-[#191a23]/5">
+                        <AlertCircle size={16} className="text-[#453abc] mr-2" />
+                        <span className="text-xs font-black text-[#191a23] uppercase">{requests.filter(r => r.status === 'Pending').length} Pending</span>
                     </div>
                 </div>
             </div>
 
-            <div className="grid lg:grid-cols-3 gap-5">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
                 {/* Request Form */}
                 <div className="lg:col-span-2">
-                    <div className="bg-white rounded-2xl p-5 shadow-md border border-[#373833]/5 max-h-[480px] overflow-y-auto">
+                    <div className="bg-white rounded-2xl p-5 shadow-md border border-[#191a23]/5 max-h-[480px] overflow-y-auto">
                         <div className="flex items-center space-x-2 mb-4">
-                            <div className="w-8 h-8 bg-[#fa2742]/10 text-[#fa2742] rounded-lg flex items-center justify-center">
+                            <div className="w-8 h-8 bg-[#453abc]/10 text-[#453abc] rounded-lg flex items-center justify-center">
                                 <FileText size={16} />
                             </div>
-                            <h3 className="text-base font-black text-[#373833]">New Request</h3>
+                            <h3 className="text-base font-black text-[#191a23]">New Request</h3>
                         </div>
 
                         <form onSubmit={handleSubmit} className="space-y-3">
                             <div>
-                                <label className="block text-[10px] font-black text-[#373833] uppercase tracking-widest mb-1.5">
+                                <label className="block text-[10px] font-black text-[#191a23] uppercase tracking-widest mb-1.5">
                                     Request Title
                                 </label>
                                 <input
@@ -196,20 +196,20 @@ const RequestSession = () => {
                                     onChange={handleInputChange}
                                     required
                                     placeholder="Enter a clear, concise title..."
-                                    className="w-full bg-gray-50 border border-transparent rounded-xl px-4 py-2.5 text-sm font-bold focus:outline-none focus:ring-2 focus:ring-[#fa2742]/10 focus:bg-white focus:border-[#fa2742]/20 transition-all"
+                                    className="w-full bg-gray-50 border border-transparent rounded-xl px-4 py-2.5 text-sm font-bold focus:outline-none focus:ring-2 focus:ring-[#453abc]/10 focus:bg-white focus:border-[#453abc]/20 transition-all"
                                 />
                             </div>
 
                             <div className="grid grid-cols-3 gap-3">
                                 <div>
-                                    <label className="block text-[10px] font-black text-[#373833] uppercase tracking-widest mb-1.5">
+                                    <label className="block text-[10px] font-black text-[#191a23] uppercase tracking-widest mb-1.5">
                                         Category
                                     </label>
                                     <select
                                         name="category"
                                         value={formData.category}
                                         onChange={handleInputChange}
-                                        className="w-full bg-gray-50 border border-transparent rounded-xl px-3 py-2.5 text-xs font-bold focus:outline-none focus:ring-2 focus:ring-[#fa2742]/10 focus:bg-white focus:border-[#fa2742]/20 transition-all"
+                                        className="w-full bg-gray-50 border border-transparent rounded-xl px-3 py-2.5 text-xs font-bold focus:outline-none focus:ring-2 focus:ring-[#453abc]/10 focus:bg-white focus:border-[#453abc]/20 transition-all"
                                     >
                                         <option value="Request">Request</option>
                                         <option value="Compliance">Compliance</option>
@@ -217,14 +217,14 @@ const RequestSession = () => {
                                 </div>
 
                                 <div>
-                                    <label className="block text-[10px] font-black text-[#373833] uppercase tracking-widest mb-1.5">
+                                    <label className="block text-[10px] font-black text-[#191a23] uppercase tracking-widest mb-1.5">
                                         Type
                                     </label>
                                     <select
                                         name="type"
                                         value={formData.type}
                                         onChange={handleInputChange}
-                                        className="w-full bg-gray-50 border border-transparent rounded-xl px-3 py-2.5 text-xs font-bold focus:outline-none focus:ring-2 focus:ring-[#fa2742]/10 focus:bg-white focus:border-[#fa2742]/20 transition-all"
+                                        className="w-full bg-gray-50 border border-transparent rounded-xl px-3 py-2.5 text-xs font-bold focus:outline-none focus:ring-2 focus:ring-[#453abc]/10 focus:bg-white focus:border-[#453abc]/20 transition-all"
                                     >
                                         <option value="Support">Support</option>
                                         <option value="Bug">Bug Report</option>
@@ -235,14 +235,14 @@ const RequestSession = () => {
                                 </div>
 
                                 <div>
-                                    <label className="block text-[10px] font-black text-[#373833] uppercase tracking-widest mb-1.5">
+                                    <label className="block text-[10px] font-black text-[#191a23] uppercase tracking-widest mb-1.5">
                                         Priority
                                     </label>
                                     <select
                                         name="priority"
                                         value={formData.priority}
                                         onChange={handleInputChange}
-                                        className="w-full bg-gray-50 border border-transparent rounded-xl px-3 py-2.5 text-xs font-bold focus:outline-none focus:ring-2 focus:ring-[#fa2742]/10 focus:bg-white focus:border-[#fa2742]/20 transition-all"
+                                        className="w-full bg-gray-50 border border-transparent rounded-xl px-3 py-2.5 text-xs font-bold focus:outline-none focus:ring-2 focus:ring-[#453abc]/10 focus:bg-white focus:border-[#453abc]/20 transition-all"
                                     >
                                         <option value="Low">Low</option>
                                         <option value="Medium">Medium</option>
@@ -253,7 +253,7 @@ const RequestSession = () => {
                             </div>
 
                             <div>
-                                <label className="block text-[10px] font-black text-[#373833] uppercase tracking-widest mb-1.5">
+                                <label className="block text-[10px] font-black text-[#191a23] uppercase tracking-widest mb-1.5">
                                     Description
                                 </label>
                                 <textarea
@@ -263,14 +263,14 @@ const RequestSession = () => {
                                     required
                                     rows="3"
                                     placeholder="Provide detailed information about your request..."
-                                    className="w-full bg-gray-50 border border-transparent rounded-xl px-4 py-2.5 text-sm font-bold focus:outline-none focus:ring-2 focus:ring-[#fa2742]/10 focus:bg-white focus:border-[#fa2742]/20 transition-all resize-none"
+                                    className="w-full bg-gray-50 border border-transparent rounded-xl px-4 py-2.5 text-sm font-bold focus:outline-none focus:ring-2 focus:ring-[#453abc]/10 focus:bg-white focus:border-[#453abc]/20 transition-all resize-none"
                                 ></textarea>
                             </div>
 
                             <button
                                 type="submit"
                                 disabled={isSubmitting}
-                                className="w-full py-2.5 bg-[#373833] text-white text-xs font-black uppercase tracking-widest rounded-xl hover:bg-[#fa2742] hover:text-[#373833] transition-all shadow-md flex items-center justify-center space-x-2 active:scale-[0.98] disabled:opacity-50"
+                                className="w-full py-2.5 bg-gradient-to-br from-[#453abc] to-[#60c3e3]  text-white text-xs font-black uppercase tracking-widest rounded-xl hover:bg-[#453abc] hover:text-[#191a23] transition-all shadow-md flex items-center justify-center space-x-2 active:scale-[0.98] disabled:opacity-50"
                             >
                                 <Send size={16} />
                                 <span>{isSubmitting ? 'Transmitting...' : 'Submit Request'}</span>
@@ -281,8 +281,8 @@ const RequestSession = () => {
 
                 {/* Request Stats */}
                 <div className="space-y-4">
-                    <div className="bg-white p-4 rounded-2xl shadow-md border border-[#373833]/5">
-                        <h4 className="text-sm font-bold text-[#373833] mb-3">Live Feed</h4>
+                    <div className="bg-white p-4 rounded-2xl shadow-md border border-[#191a23]/5">
+                        <h4 className="text-sm font-bold text-[#191a23] mb-3">Live Feed</h4>
                         <div className="space-y-2">
                             <div className="flex justify-between items-center p-3 bg-blue-500/10 rounded-xl">
                                 <span className="text-[10px] font-black text-blue-500 uppercase tracking-widest">Total</span>
@@ -309,9 +309,9 @@ const RequestSession = () => {
                         </div>
                     </div>
 
-                    <div className="bg-[#373833] p-4 rounded-2xl shadow-md text-white">
+                    <div className="bg-gray-800 p-4 rounded-2xl shadow-md text-white">
                         <div className="flex items-center space-x-2 mb-2">
-                            <AlertCircle className="text-[#fa2742]" size={16} />
+                            <AlertCircle className="text-[#453abc]" size={16} />
                             <h4 className="text-xs font-black uppercase tracking-widest">Operator Note</h4>
                         </div>
                         <p className="text-xs text-white/60 font-medium leading-relaxed">
@@ -324,15 +324,15 @@ const RequestSession = () => {
             {/* Thread History */}
             <div className="space-y-4">
                 <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
-                    <h3 className="text-2xl font-black text-[#373833]">Active Threads</h3>
+                    <h3 className="text-2xl font-black text-[#191a23]">Active Threads</h3>
                     <div className="flex flex-wrap gap-2">
                         {['all', 'requests', 'complaints', 'unread', 'Support', 'Bug', 'Feature', 'Complaint'].map((filter) => (
                             <button
                                 key={filter}
                                 onClick={() => setSelectedFilter(filter)}
                                 className={`px-4 py-2 rounded-xl font-black text-xs uppercase tracking-widest transition-all ${selectedFilter === filter
-                                    ? 'bg-[#373833] text-white shadow-lg'
-                                    : 'bg-white text-[#373833]/60 hover:text-[#373833] border border-[#373833]/5 shadow-sm'
+                                    ? 'bg-[#191a23] text-white shadow-lg'
+                                    : 'bg-white text-[#191a23]/60 hover:text-[#191a23] border border-[#191a23]/5 shadow-sm'
                                     }`}
                             >
                                 {filter}
@@ -342,7 +342,7 @@ const RequestSession = () => {
                 </div>
 
                 {loading ? (
-                    <div className="text-center py-10 text-[#373833]/40 font-medium italic">Loading requests...</div>
+                    <div className="text-center py-10 text-[#191a23]/40 font-medium italic">Loading requests...</div>
                 ) : filteredRequests.length > 0 ? (
                     filteredRequests.map((request) => {
                         const isExpanded = expandedId === request._id;
@@ -353,11 +353,11 @@ const RequestSession = () => {
                         return (
                             <div
                                 key={request._id}
-                                className={`bg-white rounded-[32px] shadow-sm border border-[#373833]/5 overflow-hidden transition-all ${isExpanded ? 'ring-2 ring-[#fa2742]/10 shadow-xl' : ''}`}
+                                className={`bg-white rounded-[32px] shadow-sm border border-[#191a23]/5 overflow-hidden transition-all ${isExpanded ? 'ring-2 ring-[#453abc]/10 shadow-xl' : ''}`}
                             >
                                 <div
                                     className="p-6 cursor-pointer select-none hover:bg-gray-50/50 transition-colors"
-                                    onClick={() => setExpandedId(isExpanded ? null : request._id)}
+                                    onClick={() => setExpandedId(prev => prev === request._id ? null : request._id)}
                                 >
                                     <div className="flex items-center justify-between">
                                         <div className="flex items-center space-x-4">
@@ -365,21 +365,21 @@ const RequestSession = () => {
                                                 <MessageSquare size={20} />
                                             </div>
                                             <div>
-                                                <h4 className="text-lg font-black text-[#373833]">{request.title}</h4>
+                                                <h4 className="text-lg font-black text-[#191a23]">{request.title}</h4>
                                                 <div className="flex flex-wrap items-center gap-2 mt-1">
                                                     <span className={`text-[10px] font-black px-2 py-0.5 rounded-md uppercase tracking-widest ${getPriorityColor(request.priority)}`}>
                                                         {request.priority}
                                                     </span>
-                                                    <span className="text-[#373833]/20">•</span>
+                                                    <span className="text-[#191a23]/20">â€¢</span>
                                                     <span className={`text-[10px] font-black px-2 py-0.5 rounded-md uppercase ${isComplaint ? 'bg-purple-100 text-purple-600' : 'bg-blue-100 text-blue-600'}`}>
                                                         {isComplaint ? 'Complaint' : 'Request'}
                                                     </span>
-                                                    <span className="text-[#373833]/20">•</span>
+                                                    <span className="text-[#191a23]/20">â€¢</span>
                                                     <span className={`text-[10px] font-black px-2 py-0.5 rounded-md uppercase tracking-widest ${request.type === 'Complaint' ? 'bg-red-100 text-red-600' : 'bg-gray-100 text-gray-600'}`}>
                                                         {request.type}
                                                     </span>
-                                                    <span className="text-[#373833]/20">•</span>
-                                                    <span className="text-xs font-bold text-[#373833]/40">{new Date(request.createdAt).toLocaleDateString()}</span>
+                                                    <span className="text-[#191a23]/20">â€¢</span>
+                                                    <span className="text-xs font-bold text-[#191a23]/40">{new Date(request.createdAt).toLocaleDateString()}</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -387,7 +387,7 @@ const RequestSession = () => {
                                             <span className={`text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-widest ${getStatusColor(request.status)}`}>
                                                 {request.status}
                                             </span>
-                                            <span className="text-xs text-[#373833]/40">{request.messages?.length || 0} msgs</span>
+                                            <span className="text-xs text-[#191a23]/40">{request.messages?.length || 0} msgs</span>
                                             {isExpanded ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
                                         </div>
                                     </div>
@@ -403,19 +403,19 @@ const RequestSession = () => {
                                                     return (
                                                         <div key={idx} className={`flex ${isMe ? 'justify-end' : 'justify-start'}`}>
                                                             <div className={`max-w-[85%] p-4 rounded-2xl ${isMe
-                                                                ? 'bg-[#373833] text-white rounded-tr-none'
-                                                                : 'bg-white border border-[#373833]/5 text-[#373833] rounded-tl-none shadow-sm'
+                                                                ? 'bg-[#191a23] text-white rounded-tr-none'
+                                                                : 'bg-white border border-[#191a23]/5 text-[#191a23] rounded-tl-none shadow-sm'
                                                                 }`}>
                                                                 <p className="text-sm font-medium">{msg.content}</p>
-                                                                <p className={`text-[10px] font-black uppercase mt-2 ${isMe ? 'text-white/40' : 'text-[#373833]/40'}`}>
-                                                                    {isMe ? 'You' : (typeof msg.sender === 'object' ? msg.sender?.name : 'Admin')} • {new Date(msg.createdAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+                                                                <p className={`text-[10px] font-black uppercase mt-2 ${isMe ? 'text-white/40' : 'text-[#191a23]/40'}`}>
+                                                                    {isMe ? 'You' : (typeof msg.sender === 'object' ? msg.sender?.name : 'Admin')} â€¢ {new Date(msg.createdAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
                                                                 </p>
                                                             </div>
                                                         </div>
                                                     );
                                                 })
                                             ) : (
-                                                <div className="text-center py-4 text-[#373833]/40 font-medium italic">No messages yet.</div>
+                                                <div className="text-center py-4 text-[#191a23]/40 font-medium italic">No messages yet.</div>
                                             )}
                                         </div>
 
@@ -426,13 +426,13 @@ const RequestSession = () => {
                                                     value={currentReply}
                                                     onChange={(e) => setReplyMap(prev => ({ ...prev, [request._id]: e.target.value }))}
                                                     placeholder="Type your message..."
-                                                    className="flex-1 bg-white border border-[#373833]/10 rounded-xl px-4 py-2.5 text-sm font-bold outline-none focus:border-[#fa2742] transition-colors shadow-sm"
+                                                    className="flex-1 bg-white border border-[#191a23]/10 rounded-xl px-4 py-2.5 text-sm font-bold outline-none focus:border-[#453abc] transition-colors shadow-sm"
                                                     onKeyDown={(e) => { if (e.key === 'Enter') handleReply(request._id); }}
                                                 />
                                                 <button
                                                     onClick={() => handleReply(request._id)}
                                                     disabled={isThisSubmitting || !currentReply.trim()}
-                                                    className="bg-[#fa2742] text-white p-3 rounded-xl hover:shadow-lg active:scale-95 transition-all disabled:opacity-40"
+                                                    className="bg-[#453abc] text-white p-3 rounded-xl hover:shadow-lg active:scale-95 transition-all disabled:opacity-40"
                                                 >
                                                     {isThisSubmitting
                                                         ? <div className="w-5 h-5 border-2 border-white/40 border-t-white rounded-full animate-spin" />
@@ -441,7 +441,7 @@ const RequestSession = () => {
                                             </div>
                                         )}
                                         {(request.status === 'Closed' || request.status === 'Resolved') && (
-                                            <p className="text-center text-xs font-black text-[#373833]/30 uppercase tracking-[0.15em] pt-2">Case {request.status} — awaiting admin action to reopen</p>
+                                            <p className="text-center text-xs font-black text-[#191a23]/30 uppercase tracking-[0.15em] pt-2">Case {request.status} â€” awaiting admin action to reopen</p>
                                         )}
                                     </div>
                                 )}
@@ -450,8 +450,8 @@ const RequestSession = () => {
                     })
                 ) : (
                     <div className="text-center py-20 bg-white rounded-[40px] border-2 border-dashed border-gray-100">
-                        <MessageSquare size={32} className="text-[#373833]/20 mx-auto mb-3" />
-                        <p className="text-[#373833]/30 font-black uppercase tracking-[0.2em] text-xs">No active sessions found.</p>
+                        <MessageSquare size={32} className="text-[#191a23]/20 mx-auto mb-3" />
+                        <p className="text-[#191a23]/30 font-black uppercase tracking-[0.2em] text-xs">No active sessions found.</p>
                     </div>
                 )}
             </div>
@@ -460,3 +460,4 @@ const RequestSession = () => {
 };
 
 export default RequestSession;
+

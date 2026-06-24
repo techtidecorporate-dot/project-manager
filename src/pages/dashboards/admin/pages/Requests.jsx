@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+﻿import React, { useState, useEffect } from 'react';
 import {
     MessageSquare,
     Filter,
@@ -116,9 +116,9 @@ const Requests = () => {
 
     const getStatusColor = (status) => {
         const colors = {
-            'Pending': 'bg-yellow-400 text-[#373833]',
+            'Pending': 'bg-yellow-400 text-[#191a23]',
             'Open': 'bg-blue-500 text-white',
-            'In Progress': 'bg-[#fa2742] text-white',
+            'In Progress': 'bg-[#453abc] text-white',
             'Resolved': 'bg-green-500 text-white',
             'Closed': 'bg-gray-500 text-white'
         };
@@ -138,28 +138,28 @@ const Requests = () => {
     if (loading) {
         return (
             <div className="flex items-center justify-center min-h-[400px]">
-                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#fa2742]"></div>
+                <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#453abc]"></div>
             </div>
         );
     }
 
     return (
-        <div className="space-y-8 pb-10 selection:bg-white selection:text-[#373833]">
+        <div className="space-y-8 pb-10 selection:bg-white selection:text-[#191a23]">
             <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
                 <div>
-                    <h2 className="text-3xl font-bold text-[#373833] tracking-tight">Support Desk</h2>
-                    <p className="text-[#373833]/60 font-medium text-xs">All requests and complaints in one place.</p>
+                    <h2 className="text-3xl font-bold text-[#191a23] tracking-tight">Support Desk</h2>
+                    <p className="text-[#191a23]/60 font-medium text-xs">All requests and complaints in one place.</p>
                 </div>
                 <div className="flex items-center gap-3">
-                    <div className="flex items-center bg-white px-4 py-2 rounded-2xl shadow-sm border border-[#373833]/5">
-                        <AlertCircle size={18} className="text-[#fa2742] mr-2" />
-                        <span className="text-xs font-black text-[#373833] uppercase">
+                    <div className="flex items-center bg-white px-4 py-2 rounded-2xl shadow-sm border border-[#191a23]/5">
+                        <AlertCircle size={18} className="text-[#453abc] mr-2" />
+                        <span className="text-xs font-black text-[#191a23] uppercase">
                             {requests.filter(r => r.status === 'Pending').length} Pending
                         </span>
                     </div>
-                    <div className="flex items-center bg-white px-4 py-2 rounded-2xl shadow-sm border border-[#373833]/5">
+                    <div className="flex items-center bg-white px-4 py-2 rounded-2xl shadow-sm border border-[#191a23]/5">
                         <MessageSquare size={16} className="text-blue-500 mr-2" />
-                        <span className="text-xs font-black text-[#373833] uppercase">{requests.length} Total</span>
+                        <span className="text-xs font-black text-[#191a23] uppercase">{requests.length} Total</span>
                     </div>
                 </div>
             </div>
@@ -171,8 +171,8 @@ const Requests = () => {
                         key={filter}
                         onClick={() => setSelectedFilter(filter)}
                         className={`px-5 py-2.5 rounded-xl font-black text-xs uppercase tracking-widest transition-all ${selectedFilter === filter
-                            ? 'bg-[#373833] text-white shadow-lg'
-                            : 'bg-white text-[#373833]/60 hover:text-[#373833] border border-[#373833]/5 shadow-sm'
+                            ? 'bg-gray-800 text-white shadow-lg'
+                            : 'bg-white text-[#191a23]/60 hover:text-[#191a23] border border-[#191a23]/5 shadow-sm'
                             }`}
                     >
                         {filter}
@@ -202,9 +202,9 @@ const Requests = () => {
                     return (
                         <div
                             key={req._id}
-                            className={`bg-white rounded-[28px] shadow-sm border border-[#373833]/5 overflow-hidden transition-all ${isExpanded ? 'ring-2 ring-[#fa2742]/10 shadow-xl' : 'hover:border-[#fa2742]/20'}`}
+                            className={`bg-white rounded-[28px] shadow-sm border border-[#191a23]/5 overflow-hidden transition-all ${isExpanded ? 'ring-2 ring-[#453abc]/10 shadow-xl' : 'hover:border-[#453abc]/20'}`}
                         >
-                            {/* Card Header – click to expand */}
+                            {/* Card Header â€“ click to expand */}
                             <div
                                 className="p-6 cursor-pointer select-none"
                                 onClick={() => handleToggleExpand(req._id)}
@@ -215,37 +215,37 @@ const Requests = () => {
                                             <MessageSquare size={24} />
                                         </div>
                                         <div>
-                                            <h3 className="text-xl font-black text-[#373833] tracking-tight">{req.title}</h3>
+                                            <h3 className="text-xl font-black text-[#191a23] tracking-tight">{req.title}</h3>
                                             <div className="flex flex-wrap items-center gap-2 mt-1">
                                                 <div className="flex items-center space-x-1.5">
-                                                    <User size={14} className="text-[#373833]/40" />
-                                                    <span className="text-xs font-bold text-[#373833]/60">{req.user?.name}</span>
-                                                    <span className="text-[#373833]/30 text-xs">({req.user?.role})</span>
+                                                    <User size={14} className="text-[#191a23]/40" />
+                                                    <span className="text-xs font-bold text-[#191a23]/60">{req.user?.name}</span>
+                                                    <span className="text-[#191a23]/30 text-xs">({req.user?.role})</span>
                                                 </div>
-                                                <span className="text-[#373833]/20">•</span>
+                                                <span className="text-[#191a23]/20">â€¢</span>
                                                 <span className={`text-[10px] font-black uppercase px-2 py-0.5 rounded-md ${getPriorityColor(req.priority)}`}>
                                                     {req.priority}
                                                 </span>
-                                                <span className="text-[#373833]/20">•</span>
+                                                <span className="text-[#191a23]/20">â€¢</span>
                                                 <span className={`text-[10px] font-black uppercase px-2 py-0.5 rounded-md ${getStatusColor(req.status)}`}>
                                                     {req.status}
                                                 </span>
-                                                <span className="text-[#373833]/20">•</span>
-                                                <span className="text-[10px] font-black uppercase text-[#373833]/40 tracking-wider">{req.type}</span>
-                                                <span className="text-[#373833]/20">•</span>
+                                                <span className="text-[#191a23]/20">â€¢</span>
+                                                <span className="text-[10px] font-black uppercase text-[#191a23]/40 tracking-wider">{req.type}</span>
+                                                <span className="text-[#191a23]/20">â€¢</span>
                                                 <span className={`text-[10px] font-black uppercase px-2 py-0.5 rounded-md ${(req.category || 'Request').toLowerCase() === 'compliance'
                                                     ? 'bg-purple-100 text-purple-600'
                                                     : 'bg-blue-100 text-blue-600'
                                                     }`}>{(req.category || 'Request').toLowerCase() === 'compliance' ? 'Complaint' : 'Request'}</span>
-                                                <span className="text-[#373833]/20">•</span>
-                                                <span className="text-[10px] font-black text-[#373833]/30">{req.messages?.length || 0} msgs</span>
+                                                <span className="text-[#191a23]/20">â€¢</span>
+                                                <span className="text-[10px] font-black text-[#191a23]/30">{req.messages?.length || 0} msgs</span>
                                             </div>
                                         </div>
                                     </div>
                                     <div className="flex items-center space-x-4 shrink-0">
                                         <div className="text-right hidden sm:block">
-                                            <p className="text-[10px] font-black text-[#373833]/30 uppercase tracking-widest leading-none mb-1">Received</p>
-                                            <p className="text-xs font-bold text-[#373833]/60">{new Date(req.createdAt).toLocaleDateString()}</p>
+                                            <p className="text-[10px] font-black text-[#191a23]/30 uppercase tracking-widest leading-none mb-1">Received</p>
+                                            <p className="text-xs font-bold text-[#191a23]/60">{new Date(req.createdAt).toLocaleDateString()}</p>
                                         </div>
                                         <div className="p-2 bg-gray-50 rounded-xl">
                                             {isExpanded ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
@@ -271,13 +271,13 @@ const Requests = () => {
                                                 return (
                                                     <div key={idx} className={`flex ${isMe ? 'justify-end' : 'justify-start'}`}>
                                                         <div className={`max-w-[80%] p-5 ${isMe
-                                                            ? 'bg-[#fa2742] text-white rounded-t-3xl rounded-bl-3xl'
-                                                            : 'bg-white text-[#373833] rounded-t-3xl rounded-br-3xl shadow-sm border border-[#373833]/5'
+                                                            ? 'bg-[#453abc] text-white rounded-t-3xl rounded-bl-3xl'
+                                                            : 'bg-white text-[#191a23] rounded-t-3xl rounded-br-3xl shadow-sm border border-[#191a23]/5'
                                                             }`}>
                                                             <p className="text-sm font-medium leading-relaxed">{msg.content}</p>
-                                                            <div className={`mt-2 flex items-center gap-2 text-[10px] font-black uppercase ${isMe ? 'text-white/60' : 'text-[#373833]/40'}`}>
-                                                                <span>{isMe ? 'You (Admin)' : `${senderName || req.user?.name}${senderRole ? ` · ${senderRole}` : ''}`}</span>
-                                                                <span>•</span>
+                                                            <div className={`mt-2 flex items-center gap-2 text-[10px] font-black uppercase ${isMe ? 'text-white/60' : 'text-[#191a23]/40'}`}>
+                                                                <span>{isMe ? 'You (Admin)' : `${senderName || req.user?.name}${senderRole ? ` Â· ${senderRole}` : ''}`}</span>
+                                                                <span>â€¢</span>
                                                                 <span>{new Date(msg.createdAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</span>
                                                             </div>
                                                         </div>
@@ -285,16 +285,16 @@ const Requests = () => {
                                                 );
                                             })
                                         ) : (
-                                            <p className="text-center text-sm text-[#373833]/30 italic py-4">No messages yet.</p>
+                                            <p className="text-center text-sm text-[#191a23]/30 italic py-4">No messages yet.</p>
                                         )}
                                     </div>
 
                                     {/* Reply Section */}
                                     {!isClosed ? (
-                                        <div className="space-y-4 pt-4 border-t border-[#373833]/5">
+                                        <div className="space-y-4 pt-4 border-t border-[#191a23]/5">
                                             <div className="flex items-center gap-2">
-                                                <div className="w-2 h-2 bg-[#fa2742] rounded-full animate-pulse" />
-                                                <span className="text-[10px] font-black text-[#373833] uppercase tracking-widest">
+                                                <div className="w-2 h-2 bg-[#453abc] rounded-full animate-pulse" />
+                                                <span className="text-[10px] font-black text-[#191a23] uppercase tracking-widest">
                                                     Replying to {req.user?.name}
                                                 </span>
                                             </div>
@@ -310,12 +310,12 @@ const Requests = () => {
                                                     }}
                                                     placeholder="Type your reply here... (Ctrl+Enter to send)"
                                                     rows={3}
-                                                    className="flex-1 bg-white border-2 border-gray-100 focus:border-[#fa2742] rounded-2xl p-4 text-sm font-bold text-[#373833] outline-none shadow-sm transition-all resize-none"
+                                                    className="flex-1 bg-white border-2 border-gray-100 focus:border-[#453abc] rounded-2xl p-4 text-sm font-bold text-[#191a23] outline-none shadow-sm transition-all resize-none"
                                                 />
                                                 <button
                                                     onClick={() => handleReply(req._id)}
                                                     disabled={isThisSubmitting || !currentReply.trim()}
-                                                    className="bg-[#fa2742] text-white p-4 rounded-2xl hover:shadow-lg active:scale-95 transition-all disabled:opacity-40 disabled:cursor-not-allowed disabled:active:scale-100 shrink-0"
+                                                    className="bg-[#453abc] text-white p-4 rounded-2xl hover:shadow-lg active:scale-95 transition-all disabled:opacity-40 disabled:cursor-not-allowed disabled:active:scale-100 shrink-0"
                                                     title="Send reply"
                                                 >
                                                     {isThisSubmitting
@@ -331,7 +331,7 @@ const Requests = () => {
                                                     {req.status !== 'In Progress' && (
                                                         <button
                                                             onClick={() => handleUpdateStatus(req._id, 'In Progress')}
-                                                            className="px-4 py-2 bg-[#fa2742]/10 text-[#fa2742] rounded-lg text-[10px] font-black uppercase tracking-widest hover:bg-[#fa2742]/20 transition-all"
+                                                            className="px-4 py-2 bg-[#453abc]/10 text-[#453abc] rounded-lg text-[10px] font-black uppercase tracking-widest hover:bg-[#453abc]/20 transition-all"
                                                         >
                                                             Start Handling
                                                         </button>
@@ -349,13 +349,13 @@ const Requests = () => {
                                                         Close Case
                                                     </button>
                                                 </div>
-                                                <p className="text-[10px] text-[#373833]/30 font-black uppercase italic">Reply as Administrator</p>
+                                                <p className="text-[10px] text-[#191a23]/30 font-black uppercase italic">Reply as Administrator</p>
                                             </div>
                                         </div>
                                     ) : (
                                         <div className="bg-white/60 border border-dashed border-gray-200 rounded-2xl p-5 text-center">
-                                            <p className="text-xs font-black text-[#373833]/40 uppercase tracking-[0.2em]">
-                                                Case {req.status} — channel closed
+                                            <p className="text-xs font-black text-[#191a23]/40 uppercase tracking-[0.2em]">
+                                                Case {req.status} â€” channel closed
                                             </p>
                                             <button
                                                 onClick={() => handleUpdateStatus(req._id, 'Open')}
@@ -374,10 +374,10 @@ const Requests = () => {
                 {filteredRequests.length === 0 && (
                     <div className="bg-white rounded-[32px] p-20 text-center border-2 border-dashed border-gray-100 shadow-sm">
                         <div className="w-16 h-16 bg-gray-50 rounded-full flex items-center justify-center mx-auto mb-4">
-                            <MessageSquare className="text-[#373833]/20" size={32} />
+                            <MessageSquare className="text-[#191a23]/20" size={32} />
                         </div>
-                        <h3 className="text-xl font-black text-[#373833]">Support Desk Clear</h3>
-                        <p className="text-sm text-[#373833]/40 font-bold mt-2">No submissions found matching the selected filter.</p>
+                        <h3 className="text-xl font-black text-[#191a23]">Support Desk Clear</h3>
+                        <p className="text-sm text-[#191a23]/40 font-bold mt-2">No submissions found matching the selected filter.</p>
                     </div>
                 )}
             </div>
@@ -386,3 +386,4 @@ const Requests = () => {
 };
 
 export default Requests;
+
